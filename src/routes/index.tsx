@@ -114,7 +114,7 @@ function Index() {
               <img 
                 src={eduardoAsset.url} 
                 alt="Eduardo Garcia" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-contain bg-muted transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
@@ -183,7 +183,7 @@ function Index() {
               <img 
                 src={pedroAsset.url} 
                 alt="Pedro Silva" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-contain bg-muted transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
