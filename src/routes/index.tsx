@@ -94,7 +94,7 @@ function Index() {
           <img 
             src="https://images.unsplash.com/photo-1600880212340-053459a11a28?q=80&w=2070&auto=format&fit=crop" 
             alt="Profissionais em reunião estratégica" 
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover transition-all duration-700"
           />
           <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
         </motion.div>
@@ -114,7 +114,7 @@ function Index() {
               <img 
                 src={eduardoAsset.url} 
                 alt="Eduardo Garcia" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-contain bg-muted transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
@@ -183,7 +183,7 @@ function Index() {
               <img 
                 src={pedroAsset.url} 
                 alt="Pedro Silva" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-contain bg-muted transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
