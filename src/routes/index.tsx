@@ -225,8 +225,9 @@ function Index() {
               img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=2070&auto=format&fit=crop"
             },
             { 
-              name: "SALVATORI", 
+              name: "SALVATORE", 
               cat: "Alimentos Premium", 
+
               desc: "Excelência e tradição para paladares exigentes e gôndolas seletas.",
               img: "https://images.unsplash.com/photo-1534422298391-e4f8c170db76?q=80&w=2070&auto=format&fit=crop"
             },
