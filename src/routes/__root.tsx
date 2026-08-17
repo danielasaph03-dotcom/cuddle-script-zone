@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "GS Representações | Conectando Marcas ao Varejo" },
+      { name: "description", content: "Representação comercial premium para alimentos, bebidas e cosméticos. Conectamos grandes marcas ao varejo com estratégia e relacionamento." },
+      { name: "author", content: "GS Representações" },
+      { property: "og:title", content: "GS Representações | Representação Comercial" },
+      { property: "og:description", content: "Conectamos grandes marcas ao varejo com relacionamento, estratégia e conhecimento de mercado." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@GSRepresentacoes" },
     ],
     links: [
       {
@@ -102,11 +102,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" className="scroll-smooth">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="antialiased">
         {children}
         <Scripts />
       </body>
