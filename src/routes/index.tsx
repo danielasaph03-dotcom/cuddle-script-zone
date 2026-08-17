@@ -94,7 +94,7 @@ function Index() {
           <img 
             src="https://images.unsplash.com/photo-1600880212340-053459a11a28?q=80&w=2070&auto=format&fit=crop" 
             alt="Profissionais em reunião estratégica" 
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover transition-all duration-700"
           />
           <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
         </motion.div>
