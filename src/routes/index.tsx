@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Users, BarChart3, Target, ArrowRight, Instagram, Mail, Menu, X } from "lucide-react";
 import { cn } from "../lib/utils";
+import pedroAsset from "../assets/pedro_silva.png.asset.json";
+import eduardoAsset from "../assets/eduardo_garcia.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
