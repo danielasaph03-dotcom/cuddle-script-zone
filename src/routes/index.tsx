@@ -5,6 +5,7 @@ import { Phone, Users, BarChart3, Target, ArrowRight, Instagram, Mail, Menu, X }
 import { cn } from "../lib/utils";
 import pedroAsset from "../assets/pedro_silva.png.asset.json";
 import eduardoAsset from "../assets/eduardo_garcia.png.asset.json";
+import heroSupermarketAsset from "../assets/hero_supermarket.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -92,8 +93,8 @@ function Index() {
           className="flex-1 w-full h-[400px] md:h-[600px] bg-muted rounded-2xl overflow-hidden relative"
         >
           <img 
-            src="https://images.unsplash.com/photo-1600880212340-053459a11a28?q=80&w=2070&auto=format&fit=crop" 
-            alt="Profissionais em reunião estratégica" 
+            src={heroSupermarketAsset.url} 
+            alt="Representantes GS em um supermercado" 
             className="w-full h-full object-cover transition-all duration-700"
           />
           <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
