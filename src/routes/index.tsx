@@ -100,45 +100,93 @@ function Index() {
         </motion.div>
       </section>
 
-      {/* A GS */}
+      {/* A GS / Quem Somos */}
       <section id="a-gs" className="py-24 bg-secondary/30">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="h-[500px] bg-muted rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1557426272-fc759fbb7a8d?q=80&w=2070&auto=format&fit=crop" 
-              alt="Relationship and strategy" 
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary uppercase leading-tight">
-                REPRESENTAÇÃO COMERCIAL VAI ALÉM DA VENDA.
-              </h2>
-              <div className="w-20 h-1 bg-accent" />
-            </div>
-            <p className="text-muted-foreground text-xl font-medium leading-relaxed">
-              É entender o mercado, conhecer o varejo e construir relacionamentos que geram oportunidades para marcas e clientes.
-            </p>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                A GS Representações nasceu de uma visão clara de continuidade entre gerações, unindo a experiência tradicional à agilidade do novo mercado. Nossa atuação é pautada pelo compromisso com o giro dos produtos e a saúde do negócio de nossos parceiros.
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-20 items-center mb-24">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="h-[500px] bg-muted rounded-2xl overflow-hidden shadow-2xl relative group"
+            >
+              <img 
+                src={pedroAsset.url} 
+                alt="Pedro Silva" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <p className="text-2xl font-bold tracking-tight">PEDRO SILVA</p>
+                <p className="text-sm font-medium opacity-80 uppercase tracking-widest">Sócio-Diretor</p>
+              </div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary uppercase leading-tight">
+                  REPRESENTAÇÃO COMERCIAL VAI ALÉM DA VENDA.
+                </h2>
+                <div className="w-20 h-1 bg-accent" />
+              </div>
+              <p className="text-muted-foreground text-xl font-medium leading-relaxed">
+                É entender o mercado, conhecer o varejo e construir relacionamentos que geram oportunidades para marcas e clientes.
               </p>
-              <p>
-                Estamos presentes no dia a dia do varejo, identificando tendências e conectando marcas que realmente fazem a diferença na gôndola e na vida do consumidor final.
-              </p>
-            </div>
-          </motion.div>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  A GS Representações nasceu de uma visão clara de continuidade entre gerações, unindo a experiência tradicional à agilidade do novo mercado. Nossa atuação é pautada pelo compromisso com o giro dos produtos e a saúde do negócio de nossos parceiros.
+                </p>
+                <p>
+                  Pedro Silva lidera a operação com foco em inovação e expansão, mantendo os valores de confiança e seriedade que são o alicerce da empresa.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2 md:order-1 space-y-8"
+            >
+              <div className="space-y-4">
+                <h2 className="text-4xl font-bold tracking-tight text-primary uppercase">
+                  EXPERIÊNCIA E TRADIÇÃO.
+                </h2>
+                <div className="w-20 h-1 bg-accent" />
+              </div>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Eduardo Garcia, pai de Pedro, traz décadas de conhecimento no setor de representação comercial. Sua trajetória é marcada pela construção de parcerias sólidas com as maiores indústrias e redes varejistas do país.
+                </p>
+                <p>
+                  Esta união familiar garante à GS Representações uma base de conhecimento profundo do mercado aliada a uma visão moderna e estratégica, oferecendo o melhor dos dois mundos para nossos parceiros.
+                </p>
+              </div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 md:order-2 h-[500px] bg-muted rounded-2xl overflow-hidden shadow-2xl relative group"
+            >
+              <img 
+                src={eduardoAsset.url} 
+                alt="Eduardo Garcia" 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <p className="text-2xl font-bold tracking-tight">EDUARDO GARCIA</p>
+                <p className="text-sm font-medium opacity-80 uppercase tracking-widest">Sócio-Fundador</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
