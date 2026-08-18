@@ -6,6 +6,10 @@ import { cn } from "../lib/utils";
 import pedroAsset from "../assets/pedro_silva.png.asset.json";
 import eduardoAsset from "../assets/eduardo_garcia.png.asset.json";
 import heroSupermarketAsset from "../assets/hero_supermarket.png.asset.json";
+import tozziLogo from "../assets/tozzi_logo.png.asset.json";
+import salvatoreLogo from "../assets/salvatore_logo.webp.asset.json";
+import balyLogo from "../assets/baly_logo.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -217,18 +221,20 @@ function Index() {
               name: "TOZZI", 
               cat: "Alimentos", 
               desc: "Produtos selecionados com foco em qualidade e giro rápido no varejo.",
+              logo: tozziLogo.url,
               img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1974&auto=format&fit=crop"
             },
             { 
               name: "BALY", 
               cat: "Bebidas", 
               desc: "Energia e sabor que conquistam o consumidor em todas as ocasiões.",
+              logo: balyLogo.url,
               img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=2070&auto=format&fit=crop"
             },
             { 
               name: "SALVATORE", 
               cat: "Alimentos Premium", 
-
+              logo: salvatoreLogo.url,
               desc: "Excelência e tradição para paladares exigentes e gôndolas seletas.",
               img: "https://images.unsplash.com/photo-1534422298391-e4f8c170db76?q=80&w=2070&auto=format&fit=crop"
             },
@@ -236,8 +242,10 @@ function Index() {
               name: "DOCIGEL", 
               cat: "Doces e Sobremesas", 
               desc: "Alegria e sabor em produtos que garantem a satisfação do cliente.",
+              logo: null as string | null,
               img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop"
             }
+
           ].map((brand) => (
             <motion.div 
               key={brand.name} 
@@ -248,8 +256,13 @@ function Index() {
                 <img src={brand.img} alt={brand.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <div className="p-6 space-y-3">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-black text-2xl tracking-tighter text-primary">{brand.name}</h3>
+                <div className="flex justify-between items-center mb-2">
+                  {brand.logo ? (
+                    <img src={brand.logo} alt={brand.name} className="h-10 w-auto object-contain" />
+                  ) : (
+                    <h3 className="font-black text-2xl tracking-tighter text-primary">{brand.name}</h3>
+                  )}
+
                   <span className="text-[10px] font-bold uppercase tracking-widest bg-accent/20 text-primary px-2 py-1 rounded">
                     {brand.cat}
                   </span>
