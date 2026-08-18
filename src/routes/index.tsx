@@ -327,13 +327,16 @@ function Index() {
             </a>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="aspect-square bg-white rounded-2xl shadow-sm flex items-center justify-center p-8 border border-border">
-              <span className="text-primary font-bold text-center">ESTRATÉGIA</span>
+            <div className="aspect-square bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center p-8 border border-border group hover:border-accent transition-colors">
+              <BarChart3 className="w-8 h-8 text-primary mb-4" />
+              <span className="text-primary font-bold text-center text-sm uppercase tracking-tighter">ESTRATÉGIA</span>
             </div>
-            <div className="aspect-square bg-primary rounded-2xl shadow-sm flex items-center justify-center p-8 text-primary-foreground">
-              <span className="font-bold text-center">RELACIONAMENTO</span>
+            <div className="aspect-square bg-primary rounded-2xl shadow-sm flex flex-col items-center justify-center p-8 text-primary-foreground group hover:bg-primary/90 transition-colors">
+              <Users className="w-8 h-8 text-accent mb-4" />
+              <span className="font-bold text-center text-sm uppercase tracking-tighter">RELACIONAMENTO</span>
             </div>
           </div>
+
         </div>
       </section>
 
