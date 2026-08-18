@@ -216,7 +216,7 @@ function Index() {
             <p className="text-muted-foreground text-lg">Um portfólio estratégico para diferentes categorias e necessidades do varejo.</p>
           </div>
           <div className="w-full md:w-auto">
-            <a href="https://api.whatsapp.com/send?phone=5518997888797" target="_blank" rel="noopener noreferrer" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+            <a href="https://wa.me/5518997888797" target="_blank" rel="noopener noreferrer" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
               SOLICITAR CATÁLOGO <ArrowRight className="w-4 h-4" />
             </a>
           </div>
