@@ -345,35 +345,30 @@ function Index() {
               { 
                 title: "ALIMENTOS", 
                 desc: "Produtos para ampliar e fortalecer o mix do varejo.",
-                img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop"
               },
               { 
                 title: "BEBIDAS", 
                 desc: "Marcas com potencial para diferentes perfis de consumidores.",
-                img: "https://images.unsplash.com/photo-1544145945-f904253d0c71?q=80&w=1974&auto=format&fit=crop"
               },
               { 
                 title: "HIGIENE & BELEZA", 
                 desc: "Produtos para categorias de alto potencial de consumo.",
-                img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1787&auto=format&fit=crop"
               }
             ].map((cat) => (
               <motion.div 
-                key={cat.title}
-                whileHover={{ y: -10 }}
-                className="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer"
+                key={cat.title} 
+                whileHover={{ y: -5 }}
+                className="group p-10 bg-secondary/20 rounded-2xl border border-border hover:border-accent transition-all duration-300 text-center space-y-4"
               >
-                <img src={cat.img} alt={cat.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8 space-y-2">
-                  <h3 className="text-2xl font-bold text-white tracking-wider">{cat.title}</h3>
-                  <p className="text-white/80 text-sm leading-relaxed">{cat.desc}</p>
-                </div>
+                <div className="text-primary font-black text-2xl tracking-tighter uppercase">{cat.title}</div>
+                <div className="w-12 h-1 bg-accent mx-auto" />
+                <p className="text-muted-foreground text-sm leading-relaxed">{cat.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Footer CTA */}
       <section id="contato" className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
