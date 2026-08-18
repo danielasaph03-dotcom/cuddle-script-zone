@@ -392,7 +392,7 @@ function Index() {
           <div className="flex flex-col gap-8 justify-center items-center">
             <div className="flex flex-col md:flex-row gap-4 w-full md:max-w-xl mx-auto">
               <a 
-                href="https://api.whatsapp.com/send?phone=5518997217576" 
+                href="https://wa.me/5518997217576" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex-1 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
@@ -400,7 +400,7 @@ function Index() {
                 <MessageCircle className="w-5 h-5" /> FALAR COM EDUARDO
               </a>
               <a 
-                href="https://api.whatsapp.com/send?phone=5518997888797" 
+                href="https://wa.me/5518997888797" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex-1 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
