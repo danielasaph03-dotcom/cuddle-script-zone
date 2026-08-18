@@ -404,22 +404,45 @@ function Index() {
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               Conectando grandes marcas ao varejo com relacionamento, estratégia e foco em resultados comerciais sólidos.
             </p>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Mail className="w-4 h-4 text-primary" />
-                <span>garcia.e.silva.representacoes@gmail.com</span>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <a 
+                  href="mailto:garcia.e.silva.representacoes@gmail.com" 
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  <Mail className="w-4 h-4 text-primary" />
+                  <span>garcia.e.silva.representacoes@gmail.com</span>
+                </a>
               </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>18 99721-7576 (Eduardo)</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>18 99788-8797 (Pedro)</span>
+              <div className="flex flex-col gap-2">
+                <a 
+                  href="https://wa.me/5518997217576" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  <MessageCircle className="w-4 h-4 text-primary" />
+                  <span>18 99721-7576 (Eduardo)</span>
+                </a>
+                <a 
+                  href="https://wa.me/5518997888797" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  <MessageCircle className="w-4 h-4 text-primary" />
+                  <span>18 99788-8797 (Pedro)</span>
+                </a>
               </div>
               <div className="flex gap-4 mt-2">
-                <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <Instagram className="w-5 h-5" />
+                </a>
+                <a href="mailto:garcia.e.silva.representacoes@gmail.com" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
+                  <Mail className="w-5 h-5" />
+                </a>
+                <a href="https://wa.me/5518997217576" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
+                  <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
             </div>
