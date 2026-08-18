@@ -466,7 +466,7 @@ function Index() {
                 <a href="mailto:garcia.e.silva.representacoes@gmail.com" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <Mail className="w-5 h-5" />
                 </a>
-                <a href="https://wa.me/5518997217576" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
+                <a href="https://web.whatsapp.com/send?phone=5518997217576" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
