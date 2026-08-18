@@ -404,16 +404,24 @@ function Index() {
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               Conectando grandes marcas ao varejo com relacionamento, estratégia e foco em resultados comerciais sólidos.
             </p>
-            <div className="flex gap-4">
-              <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="https://wa.me/5581999999999" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                <Phone className="w-5 h-5" />
-              </a>
-              <a href="mailto:contato@gsrepresentacoes.com.br" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                <Mail className="w-5 h-5" />
-              </a>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Mail className="w-4 h-4 text-primary" />
+                <span>garcia.e.silva.representacoes@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Phone className="w-4 h-4 text-primary" />
+                <span>18 99721-7576 (Eduardo)</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <Phone className="w-4 h-4 text-primary" />
+                <span>18 99788-8797 (Pedro)</span>
+              </div>
+              <div className="flex gap-4 mt-2">
+                <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                  <Instagram className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
           <div className="space-y-6">
