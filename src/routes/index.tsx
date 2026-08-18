@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Users, BarChart3, Target, ArrowRight, Instagram, Mail, Menu, X } from "lucide-react";
+import { Phone, Users, BarChart3, Target, ArrowRight, Instagram, Mail, Menu, X, MessageCircle } from "lucide-react";
 import { cn } from "../lib/utils";
 import pedroAsset from "../assets/pedro_silva.png.asset.json";
 import eduardoAsset from "../assets/eduardo_garcia.png.asset.json";
@@ -384,14 +384,34 @@ function Index() {
           <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
             Se você é varejista e busca ampliar seu mix com marcas de alto giro e qualidade, fale com a GS Representações.
           </p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <a href="#" className="bg-accent text-accent-foreground px-12 py-5 rounded-full font-black text-lg hover:scale-105 transition-transform shadow-xl">
-              ENTRAR EM CONTATO
-            </a>
-            <div className="flex items-center gap-4 text-sm font-semibold text-primary-foreground/60">
-              <span className="w-8 h-px bg-primary-foreground/30" />
-              Siga-nos nas redes sociais
-              <span className="w-8 h-px bg-primary-foreground/30" />
+          <div className="flex flex-col gap-8 justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+              <a 
+                href="https://wa.me/5518997217576" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-5 h-5" /> FALAR COM EDUARDO
+              </a>
+              <a 
+                href="https://wa.me/5518997888797" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-5 h-5" /> FALAR COM PEDRO
+              </a>
+            </div>
+            
+            <div className="flex items-center gap-6">
+              <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors font-bold text-sm">
+                <Instagram className="w-5 h-5" /> INSTAGRAM
+              </a>
+              <span className="w-px h-4 bg-primary-foreground/20" />
+              <a href="mailto:garcia.e.silva.representacoes@gmail.com" className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors font-bold text-sm">
+                <Mail className="w-5 h-5" /> E-MAIL
+              </a>
             </div>
           </div>
         </div>
@@ -404,22 +424,45 @@ function Index() {
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               Conectando grandes marcas ao varejo com relacionamento, estratégia e foco em resultados comerciais sólidos.
             </p>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Mail className="w-4 h-4 text-primary" />
-                <span>garcia.e.silva.representacoes@gmail.com</span>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
+                <a 
+                  href="mailto:garcia.e.silva.representacoes@gmail.com" 
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  <Mail className="w-4 h-4 text-primary" />
+                  <span>garcia.e.silva.representacoes@gmail.com</span>
+                </a>
               </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>18 99721-7576 (Eduardo)</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 text-primary" />
-                <span>18 99788-8797 (Pedro)</span>
+              <div className="flex flex-col gap-2">
+                <a 
+                  href="https://wa.me/5518997217576" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  <MessageCircle className="w-4 h-4 text-primary" />
+                  <span>18 99721-7576 (Eduardo)</span>
+                </a>
+                <a 
+                  href="https://wa.me/5518997888797" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  <MessageCircle className="w-4 h-4 text-primary" />
+                  <span>18 99788-8797 (Pedro)</span>
+                </a>
               </div>
               <div className="flex gap-4 mt-2">
-                <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+                <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <Instagram className="w-5 h-5" />
+                </a>
+                <a href="mailto:garcia.e.silva.representacoes@gmail.com" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
+                  <Mail className="w-5 h-5" />
+                </a>
+                <a href="https://wa.me/5518997217576" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
+                  <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
             </div>
