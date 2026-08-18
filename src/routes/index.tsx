@@ -94,15 +94,19 @@ function Index() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex-1 w-full h-[400px] md:h-[600px] bg-muted rounded-2xl overflow-hidden relative"
+          className="flex-1 w-full h-[400px] md:h-[600px] flex items-center justify-center p-12 bg-secondary/30 rounded-2xl border border-primary/10 relative overflow-hidden"
         >
-          <img 
-            src={heroSupermarketAsset.url} 
-            alt="Representantes GS em um supermercado" 
-            className="w-full h-full object-cover transition-all duration-700"
-          />
-          <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(25,62,45,0.05)_0%,transparent_70%)]" />
+          <div className="relative z-10 text-center space-y-2">
+            <span className="text-accent font-bold tracking-[0.2em] text-sm mb-4 block">GRUPO</span>
+            <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-primary leading-none">
+              GS
+            </h2>
+            <div className="w-24 h-1 bg-accent mx-auto mt-4" />
+            <p className="text-primary/60 font-bold tracking-[0.3em] text-xs mt-4">REPRESENTAÇÕES</p>
+          </div>
         </motion.div>
+
       </section>
 
       {/* A GS / Quem Somos */}
@@ -252,21 +256,22 @@ function Index() {
               whileHover={{ y: -5 }}
               className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:border-accent transition-all duration-300"
             >
-              <div className="h-48 bg-muted overflow-hidden">
-                <img src={brand.img} alt={brand.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div className="h-48 bg-muted/50 flex items-center justify-center p-8 group-hover:bg-accent/5 transition-colors">
+                {brand.logo ? (
+                  <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
+                ) : (
+                  <div className="text-4xl font-black text-primary/20">{brand.name}</div>
+                )}
               </div>
+
               <div className="p-6 space-y-3">
                 <div className="flex justify-between items-center mb-2">
-                  {brand.logo ? (
-                    <img src={brand.logo} alt={brand.name} className="h-10 w-auto object-contain" />
-                  ) : (
-                    <h3 className="font-black text-2xl tracking-tighter text-primary">{brand.name}</h3>
-                  )}
-
+                  <h3 className="font-black text-xl tracking-tighter text-primary">{brand.name}</h3>
                   <span className="text-[10px] font-bold uppercase tracking-widest bg-accent/20 text-primary px-2 py-1 rounded">
                     {brand.cat}
                   </span>
                 </div>
+
                 <p className="text-sm text-muted-foreground leading-relaxed">{brand.desc}</p>
               </div>
             </motion.div>
@@ -322,13 +327,16 @@ function Index() {
             </a>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="aspect-square bg-white rounded-2xl shadow-sm flex items-center justify-center p-8 border border-border">
-              <span className="text-primary font-bold text-center">ESTRATÉGIA</span>
+            <div className="aspect-square bg-white rounded-2xl shadow-sm flex flex-col items-center justify-center p-8 border border-border group hover:border-accent transition-colors">
+              <BarChart3 className="w-8 h-8 text-primary mb-4" />
+              <span className="text-primary font-bold text-center text-sm uppercase tracking-tighter">ESTRATÉGIA</span>
             </div>
-            <div className="aspect-square bg-primary rounded-2xl shadow-sm flex items-center justify-center p-8 text-primary-foreground">
-              <span className="font-bold text-center">RELACIONAMENTO</span>
+            <div className="aspect-square bg-primary rounded-2xl shadow-sm flex flex-col items-center justify-center p-8 text-primary-foreground group hover:bg-primary/90 transition-colors">
+              <Users className="w-8 h-8 text-accent mb-4" />
+              <span className="font-bold text-center text-sm uppercase tracking-tighter">RELACIONAMENTO</span>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -340,35 +348,30 @@ function Index() {
               { 
                 title: "ALIMENTOS", 
                 desc: "Produtos para ampliar e fortalecer o mix do varejo.",
-                img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop"
               },
               { 
                 title: "BEBIDAS", 
                 desc: "Marcas com potencial para diferentes perfis de consumidores.",
-                img: "https://images.unsplash.com/photo-1544145945-f904253d0c71?q=80&w=1974&auto=format&fit=crop"
               },
               { 
                 title: "HIGIENE & BELEZA", 
                 desc: "Produtos para categorias de alto potencial de consumo.",
-                img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1787&auto=format&fit=crop"
               }
             ].map((cat) => (
               <motion.div 
-                key={cat.title}
-                whileHover={{ y: -10 }}
-                className="group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer"
+                key={cat.title} 
+                whileHover={{ y: -5 }}
+                className="group p-10 bg-secondary/20 rounded-2xl border border-border hover:border-accent transition-all duration-300 text-center space-y-4"
               >
-                <img src={cat.img} alt={cat.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-8 space-y-2">
-                  <h3 className="text-2xl font-bold text-white tracking-wider">{cat.title}</h3>
-                  <p className="text-white/80 text-sm leading-relaxed">{cat.desc}</p>
-                </div>
+                <div className="text-primary font-black text-2xl tracking-tighter uppercase">{cat.title}</div>
+                <div className="w-12 h-1 bg-accent mx-auto" />
+                <p className="text-muted-foreground text-sm leading-relaxed">{cat.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* Footer CTA */}
       <section id="contato" className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
