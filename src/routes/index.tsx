@@ -380,12 +380,7 @@ function Index() {
       <section id="contato" className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full -mr-32 -mt-32 blur-3xl" />
         <div className="container mx-auto px-4 max-w-4xl text-center space-y-10 relative z-10">
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center shadow-lg mb-4">
-              <MessageCircle className="w-10 h-10 text-accent-foreground" />
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tight">VAMOS CONSTRUIR NOVAS OPORTUNIDADES?</h2>
-          </div>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight">VAMOS CONSTRUIR NOVAS OPORTUNIDADES?</h2>
           <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
             Se você é varejista e busca ampliar seu mix com marcas de alto giro e qualidade, fale com a GS Representações pelo WhatsApp.
           </p>
