@@ -10,6 +10,7 @@ import tozziLogo from "../assets/tozzi_logo.png.asset.json";
 import salvatoreLogo from "../assets/salvatore_logo.webp.asset.json";
 import balyLogo from "../assets/baly_logo.png.asset.json";
 import docigelLogo from "../assets/doccigel-logo.png.asset.json";
+import logoGS from "../assets/logo-gs.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -26,7 +27,9 @@ function Index() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <div className="font-bold text-xl tracking-tighter text-primary">GS Representações</div>
+          <div className="flex items-center gap-2">
+            <img src={logoGS.url} alt="GS Representações" className="h-10 w-auto" />
+          </div>
           <nav className="hidden md:flex gap-8 items-center text-sm font-semibold">
             <a href="#inicio" className="hover:text-primary transition-colors">Início</a>
             <a href="#a-gs" className="hover:text-primary transition-colors">A GS</a>
@@ -96,16 +99,15 @@ function Index() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex-1 w-full h-[400px] md:h-[600px] flex items-center justify-center p-12 bg-secondary/30 rounded-2xl border border-primary/10 relative overflow-hidden"
+          className="flex-1 w-full h-[400px] md:h-[600px] flex items-center justify-center p-8 bg-secondary/30 rounded-2xl border border-primary/10 relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(25,62,45,0.05)_0%,transparent_70%)]" />
-          <div className="relative z-10 text-center space-y-2">
-            <span className="text-accent font-bold tracking-[0.2em] text-sm mb-4 block">GRUPO</span>
-            <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-primary leading-none">
-              GS
-            </h2>
-            <div className="w-24 h-1 bg-accent mx-auto mt-4" />
-            <p className="text-primary/60 font-bold tracking-[0.3em] text-xs mt-4">REPRESENTAÇÕES</p>
+          <div className="relative z-10 w-full h-full flex items-center justify-center">
+            <img 
+              src={logoGS.url} 
+              alt="Grupo GS Representações" 
+              className="max-w-[80%] max-h-[80%] object-contain drop-shadow-2xl" 
+            />
           </div>
         </motion.div>
 
@@ -420,7 +422,7 @@ function Index() {
       <footer className="bg-secondary/20 py-20 border-t border-border">
         <div className="container mx-auto px-4 grid md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-2 space-y-6">
-            <div className="font-bold text-2xl tracking-tighter text-primary">GS Representações</div>
+            <img src={logoGS.url} alt="GS Representações" className="h-12 w-auto mb-4" />
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               Conectando grandes marcas ao varejo com relacionamento, estratégia e foco em resultados comerciais sólidos.
             </p>
