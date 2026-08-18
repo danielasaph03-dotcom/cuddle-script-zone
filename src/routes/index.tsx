@@ -216,8 +216,8 @@ function Index() {
             <p className="text-muted-foreground text-lg">Um portfólio estratégico para diferentes categorias e necessidades do varejo.</p>
           </div>
           <div className="w-full md:w-auto">
-            <a href="#contato" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
-              VER PORTFÓLIO COMPLETO <ArrowRight className="w-4 h-4" />
+            <a href="https://api.whatsapp.com/send?phone=5518997888797" target="_blank" rel="noopener noreferrer" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+              SOLICITAR CATÁLOGO <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
@@ -390,20 +390,20 @@ function Index() {
             Se você é varejista e busca ampliar seu mix com marcas de alto giro e qualidade, fale com a GS Representações pelo WhatsApp.
           </p>
           <div className="flex flex-col gap-8 justify-center items-center">
-            <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+            <div className="flex flex-col md:flex-row gap-4 w-full md:max-w-xl mx-auto">
               <a 
-                href="https://wa.me/5518997217576" 
+                href="https://api.whatsapp.com/send?phone=5518997217576" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-5 h-5" /> FALAR COM EDUARDO
               </a>
               <a 
-                href="https://wa.me/5518997888797" 
+                href="https://api.whatsapp.com/send?phone=5518997888797" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
+                className="flex-1 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-5 h-5" /> FALAR COM PEDRO
               </a>
@@ -441,7 +441,7 @@ function Index() {
               </div>
               <div className="flex flex-col gap-2">
                 <a 
-                  href="https://wa.me/5518997217576" 
+                  href="https://api.whatsapp.com/send?phone=5518997217576" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
@@ -450,7 +450,7 @@ function Index() {
                   <span>18 99721-7576 (Eduardo)</span>
                 </a>
                 <a 
-                  href="https://wa.me/5518997888797" 
+                  href="https://api.whatsapp.com/send?phone=5518997888797" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
@@ -466,7 +466,7 @@ function Index() {
                 <a href="mailto:garcia.e.silva.representacoes@gmail.com" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <Mail className="w-5 h-5" />
                 </a>
-                <a href="https://wa.me/5518997217576" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
+                <a href="https://api.whatsapp.com/send?phone=5518997217576" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
