@@ -441,7 +441,7 @@ function Index() {
               </div>
               <div className="flex flex-col gap-2">
                 <a 
-                  href="https://api.whatsapp.com/send?phone=5518997217576" 
+                  href="https://wa.me/5518997217576" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
@@ -450,7 +450,7 @@ function Index() {
                   <span>18 99721-7576 (Eduardo)</span>
                 </a>
                 <a 
-                  href="https://api.whatsapp.com/send?phone=5518997888797" 
+                  href="https://wa.me/5518997888797" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
