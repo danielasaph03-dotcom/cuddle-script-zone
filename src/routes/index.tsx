@@ -9,9 +9,11 @@ import heroSupermarketAsset from "../assets/hero_supermarket.png.asset.json";
 import tozziLogo from "../assets/tozzi_logo.png.asset.json";
 import salvatoreLogo from "../assets/salvatore_logo.webp.asset.json";
 import balyLogo from "../assets/baly_logo.png.asset.json";
+import docigelLogo from "../assets/doccigel-logo.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
+
   component: Index,
 });
 
@@ -246,9 +248,10 @@ function Index() {
               name: "DOCIGEL", 
               cat: "Doces e Sobremesas", 
               desc: "Alegria e sabor em produtos que garantem a satisfação do cliente.",
-              logo: null as string | null,
+              logo: docigelLogo.url,
               img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop"
             }
+
 
           ].map((brand) => (
             <motion.div 
