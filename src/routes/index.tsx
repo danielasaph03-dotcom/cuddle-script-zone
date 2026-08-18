@@ -94,15 +94,19 @@ function Index() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex-1 w-full h-[400px] md:h-[600px] bg-muted rounded-2xl overflow-hidden relative"
+          className="flex-1 w-full h-[400px] md:h-[600px] flex items-center justify-center p-12 bg-secondary/30 rounded-2xl border border-primary/10 relative overflow-hidden"
         >
-          <img 
-            src={heroSupermarketAsset.url} 
-            alt="Representantes GS em um supermercado" 
-            className="w-full h-full object-cover transition-all duration-700"
-          />
-          <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(25,62,45,0.05)_0%,transparent_70%)]" />
+          <div className="relative z-10 text-center space-y-2">
+            <span className="text-accent font-bold tracking-[0.2em] text-sm mb-4 block">GRUPO</span>
+            <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-primary leading-none">
+              GS
+            </h2>
+            <div className="w-24 h-1 bg-accent mx-auto mt-4" />
+            <p className="text-primary/60 font-bold tracking-[0.3em] text-xs mt-4">REPRESENTAÇÕES</p>
+          </div>
         </motion.div>
+
       </section>
 
       {/* A GS / Quem Somos */}
