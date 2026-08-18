@@ -256,21 +256,22 @@ function Index() {
               whileHover={{ y: -5 }}
               className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:border-accent transition-all duration-300"
             >
-              <div className="h-48 bg-muted overflow-hidden">
-                <img src={brand.img} alt={brand.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div className="h-48 bg-muted/50 flex items-center justify-center p-8 group-hover:bg-accent/5 transition-colors">
+                {brand.logo ? (
+                  <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
+                ) : (
+                  <div className="text-4xl font-black text-primary/20">{brand.name}</div>
+                )}
               </div>
+
               <div className="p-6 space-y-3">
                 <div className="flex justify-between items-center mb-2">
-                  {brand.logo ? (
-                    <img src={brand.logo} alt={brand.name} className="h-10 w-auto object-contain" />
-                  ) : (
-                    <h3 className="font-black text-2xl tracking-tighter text-primary">{brand.name}</h3>
-                  )}
-
+                  <h3 className="font-black text-xl tracking-tighter text-primary">{brand.name}</h3>
                   <span className="text-[10px] font-bold uppercase tracking-widest bg-accent/20 text-primary px-2 py-1 rounded">
                     {brand.cat}
                   </span>
                 </div>
+
                 <p className="text-sm text-muted-foreground leading-relaxed">{brand.desc}</p>
               </div>
             </motion.div>
