@@ -422,7 +422,7 @@ function Index() {
       <footer className="bg-secondary/20 py-20 border-t border-border">
         <div className="container mx-auto px-4 grid md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-2 space-y-6">
-            <div className="font-bold text-2xl tracking-tighter text-primary">GS Representações</div>
+            <img src={logoGS.url} alt="GS Representações" className="h-12 w-auto mb-4" />
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               Conectando grandes marcas ao varejo com relacionamento, estratégia e foco em resultados comerciais sólidos.
             </p>
