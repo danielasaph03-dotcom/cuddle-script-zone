@@ -35,6 +35,7 @@ function Index() {
             <a href="#a-gs" className="hover:text-primary transition-colors">A GS</a>
             <a href="#marcas" className="hover:text-primary transition-colors">Marcas</a>
             <a href="#diferenciais" className="hover:text-primary transition-colors">Diferenciais</a>
+            <a href="#clientes" className="hover:text-primary transition-colors">Clientes</a>
             <a href="#contato" className="hover:text-primary transition-colors">Contato</a>
           </nav>
           <a href="#contato" className="hidden md:inline-flex bg-primary text-primary-foreground px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all">
@@ -65,6 +66,7 @@ function Index() {
                 <a href="#a-gs" onClick={() => setIsMenuOpen(false)} className="py-2 hover:text-primary transition-colors border-b border-border/50">A GS</a>
                 <a href="#marcas" onClick={() => setIsMenuOpen(false)} className="py-2 hover:text-primary transition-colors border-b border-border/50">Marcas</a>
                 <a href="#diferenciais" onClick={() => setIsMenuOpen(false)} className="py-2 hover:text-primary transition-colors border-b border-border/50">Diferenciais</a>
+                <a href="#clientes" onClick={() => setIsMenuOpen(false)} className="py-2 hover:text-primary transition-colors border-b border-border/50">Clientes</a>
                 <a href="#contato" onClick={() => setIsMenuOpen(false)} className="py-2 hover:text-primary transition-colors border-b border-border/50">Contato</a>
                 <a href="#contato" onClick={() => setIsMenuOpen(false)} className="mt-2 bg-primary text-primary-foreground px-6 py-3 rounded-full text-center font-bold">
                   Fale com a GS
@@ -376,6 +378,50 @@ function Index() {
           </div>
         </div>
       </section>
+      {/* Clientes */}
+      <section id="clientes" className="py-24 bg-secondary/10">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-primary uppercase">
+              PRINCIPAIS CLIENTES E PARCEIROS.
+            </h2>
+            <div className="w-20 h-1 bg-accent mx-auto" />
+            <p className="text-muted-foreground text-lg">
+              Conectamos marcas às maiores redes de supermercados e varejistas da região.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { city: "LONDRINA", markets: ["Muffato"] },
+              { city: "SÃO PAULO", markets: ["Muffato"] },
+              { city: "MARINGÁ", markets: ["Amigão"] },
+              { city: "PRESIDENTE PRUDENTE", markets: ["Mercado Estrela", "Mercado Nagai"] },
+              { city: "MARTINÓPOLIS", markets: ["Irmãos Nagai", "Conal Supercenter"] }
+            ].map((item) => (
+              <motion.div 
+                key={item.city}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-card p-8 rounded-2xl border border-border hover:border-accent transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  <span className="text-xs font-black tracking-widest text-primary/60 uppercase">{item.city}</span>
+                </div>
+                <div className="space-y-3">
+                  {item.markets.map((market) => (
+                    <div key={market} className="text-xl font-bold text-primary tracking-tight">
+                      {market}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
 
       {/* Footer CTA */}
@@ -476,6 +522,7 @@ function Index() {
               <a href="#a-gs" className="hover:text-primary transition-colors w-fit">A GS</a>
               <a href="#marcas" className="hover:text-primary transition-colors w-fit">Marcas</a>
               <a href="#diferenciais" className="hover:text-primary transition-colors w-fit">Diferenciais</a>
+              <a href="#clientes" className="hover:text-primary transition-colors w-fit">Clientes</a>
               <a href="#contato" className="hover:text-primary transition-colors w-fit">Contato</a>
             </nav>
           </div>
