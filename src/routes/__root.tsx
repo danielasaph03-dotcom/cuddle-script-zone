@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@GSRepresentacoes" },
       { name: "referrer", content: "strict-origin-when-cross-origin" },
-      { "http-equiv": "Content-Security-Policy", content: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.lovableproject.com;" },
+      { name: "x-content-type-options", content: "nosniff" },
     ],
     links: [
       {
