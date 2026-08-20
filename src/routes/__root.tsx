@@ -85,6 +85,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@GSRepresentacoes" },
+      { name: "referrer", content: "strict-origin-when-cross-origin" },
+      { name: "x-content-type-options", content: "nosniff" },
     ],
     links: [
       {
