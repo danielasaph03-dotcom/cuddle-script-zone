@@ -231,7 +231,7 @@ function Index() {
             <p className="text-muted-foreground text-lg">Um portfólio estratégico para diferentes categorias e necessidades do varejo.</p>
           </div>
           <div className="w-full md:w-auto">
-            <a href="https://wa.me/5518997888797?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20solicitar%20o%20cat%C3%A1logo." target="_blank" rel="noopener noreferrer" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+            <a href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." target="_blank" rel="noopener noreferrer" className="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
               SOLICITAR CATÁLOGO <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -490,7 +490,7 @@ function Index() {
                   Sua cidade não apareceu na lista? Consulte nossa equipe para verificar a disponibilidade de atendimento em sua região.
                 </p>
                 <a 
-                  href="https://wa.me/5518997888797?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20consultar%20o%20atendimento%20na%20minha%20regi%C3%A3o." 
+                  href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 rounded-full font-black text-xs hover:scale-105 transition-transform shadow-lg uppercase tracking-wider"
@@ -569,7 +569,7 @@ function Index() {
                 <MessageCircle className="w-5 h-5" /> FALAR COM EDUARDO
               </a>
               <a 
-                href="https://wa.me/5518997888797?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Pedro." 
+                href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex-1 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
@@ -619,7 +619,7 @@ function Index() {
                   <span>18 99721-7576 (Eduardo)</span>
                 </a>
                 <a 
-                  href="https://wa.me/5518997888797?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Pedro." 
+                  href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
@@ -635,7 +635,7 @@ function Index() {
                 <a href="mailto:garcia.e.silva.representacoes@gmail.com" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <Mail className="w-5 h-5" />
                 </a>
-                <a href="https://wa.me/5518997217576?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20a%20GS%20Representa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
+                <a href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all text-muted-foreground">
                   <MessageCircle className="w-5 h-5" />
                 </a>
               </div>
