@@ -251,9 +251,9 @@ function Index() {
             },
             { 
               name: "SALVATORE", 
-              cat: "Alimentos Premium", 
+              cat: "Cosméticos", 
               logo: salvatoreLogo.url,
-              desc: "Excelência e tradição para paladares exigentes e gôndolas seletas.",
+              desc: "Produtos cosméticos de alta performance que elevam o padrão de cuidado e beleza.",
               img: "https://images.unsplash.com/photo-1534422298391-e4f8c170db76?q=80&w=2070&auto=format&fit=crop"
             },
             { 
