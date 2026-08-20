@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Users, BarChart3, Target, ArrowRight, Instagram, Mail, Menu, X, MessageCircle } from "lucide-react";
+import { Phone, Users, BarChart3, Target, ArrowRight, Instagram, Mail, Menu, X, MessageCircle, MapPin } from "lucide-react";
 import { cn } from "../lib/utils";
+import { SPMap } from "../components/SPMap";
 import pedroAsset from "../assets/pedro_silva.png.asset.json";
 import eduardoAsset from "../assets/eduardo_garcia.png.asset.json";
 import heroSupermarketAsset from "../assets/hero_supermarket.png.asset.json";
@@ -11,6 +12,7 @@ import salvatoreLogo from "../assets/salvatore_logo.webp.asset.json";
 import balyLogo from "../assets/baly_logo.png.asset.json";
 import docigelLogo from "../assets/doccigel-logo.png.asset.json";
 import logoGS from "../assets/logo-gs.png.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
