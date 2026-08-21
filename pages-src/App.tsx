@@ -1,29 +1,19 @@
-import React, { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Users, BarChart3, Target, ArrowRight, Instagram, Mail, Menu, X, MessageCircle, MapPin } from "lucide-react";
-import { cn } from "../lib/utils";
-import { SPMap } from "../components/SPMap";
-import pedroAsset from "../assets/pedro_silva.png.asset.json";
-import eduardoAsset from "../assets/eduardo_garcia.png.asset.json";
-import tozziLogo from "../assets/tozzi_logo.png.asset.json";
-import salvatoreLogo from "../assets/salvatore_logo.webp.asset.json";
-import balyLogo from "../assets/baly_logo.png.asset.json";
-import docigelLogo from "../assets/doccigel-logo.png.asset.json";
-import logoGS from "../assets/logo-gs.png.asset.json";
+import { cn } from "../src/lib/utils";
+import { SPMap } from "../src/components/SPMap";
+import pedroAsset from "./images/pedro_silva.webp";
+import eduardoAsset from "./images/eduardo_garcia.webp";
+import tozziLogo from "./images/tozzi_logo.webp";
+import salvatoreLogo from "./images/salvatore_logo.webp";
+import balyLogo from "./images/baly_logo.png";
+import docigelLogo from "./images/doccigel-logo.png";
+import logoGS from "./images/logo-gs.png";
 
-
-
-export const Route = createFileRoute("/")({
-
-  component: Index,
-});
-
-function Index() {
+export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
-
-
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -31,7 +21,7 @@ function Index() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src={logoGS.url} alt="GS Representações" className="h-10 w-auto" fetchPriority="high" />
+            <img src={logoGS} alt="GS Representações" className="h-10 w-auto" fetchPriority="high" />
           </div>
           <nav className="hidden md:flex gap-8 items-center text-sm font-semibold">
             <a href="#inicio" className="hover:text-primary transition-colors">Início</a>
@@ -87,7 +77,7 @@ function Index() {
 
       {/* Hero */}
       <section id="inicio" className="pt-32 pb-20 container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -104,7 +94,7 @@ function Index() {
             <a href="#contato" className="border border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-all">FALE CONOSCO</a>
           </div>
         </motion.div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -113,10 +103,10 @@ function Index() {
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(25,62,45,0.05)_0%,transparent_70%)]" />
           <div className="relative z-10 w-full h-full flex items-center justify-center">
-            <img 
-              src={logoGS.url} 
-              alt="Grupo GS Representações" 
-              className="max-w-[80%] max-h-[80%] object-contain drop-shadow-2xl" 
+            <img
+              src={logoGS}
+              alt="Grupo GS Representações"
+              className="max-w-[80%] max-h-[80%] object-contain drop-shadow-2xl"
               fetchPriority="high"
             />
           </div>
@@ -129,15 +119,15 @@ function Index() {
         <div className="container mx-auto px-4">
           {/* Eduardo Silva - Primeiro */}
           <div className="grid md:grid-cols-2 gap-20 items-center mb-24">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="h-[500px] bg-muted rounded-2xl overflow-hidden shadow-2xl relative group"
             >
-              <img 
-                src={eduardoAsset.url} 
-                alt="Eduardo Silva" 
+              <img
+                src={eduardoAsset}
+                alt="Eduardo Silva"
                 className="w-full h-full object-contain bg-muted transition-all duration-700"
                 loading="lazy"
               />
@@ -147,7 +137,7 @@ function Index() {
                 <p className="text-sm font-medium opacity-80 uppercase tracking-widest">Sócio-Fundador</p>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -175,7 +165,7 @@ function Index() {
 
           {/* Pedro Garcia - Segundo */}
           <div className="grid md:grid-cols-2 gap-20 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -199,15 +189,15 @@ function Index() {
                 </p>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="order-1 md:order-2 h-[500px] bg-muted rounded-2xl overflow-hidden shadow-2xl relative group"
             >
-              <img 
-                src={pedroAsset.url} 
-                alt="Pedro Garcia" 
+              <img
+                src={pedroAsset}
+                alt="Pedro Garcia"
                 className="w-full h-full object-contain bg-muted transition-all duration-700"
                 loading="lazy"
               />
@@ -238,39 +228,33 @@ function Index() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { 
-              name: "TOZZI", 
-              cat: "Alimentos", 
+            {
+              name: "TOZZI",
+              cat: "Alimentos",
               desc: "Produtos selecionados com foco em qualidade e giro rápido no varejo.",
-              logo: tozziLogo.url,
-              img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1974&auto=format&fit=crop"
+              logo: tozziLogo,
             },
-            { 
-              name: "BALY", 
-              cat: "Bebidas", 
+            {
+              name: "BALY",
+              cat: "Bebidas",
               desc: "Energia e sabor que conquistam o consumidor em todas as ocasiões.",
-              logo: balyLogo.url,
-              img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=2070&auto=format&fit=crop"
+              logo: balyLogo,
             },
-            { 
-              name: "SALVATORE", 
-              cat: "Cosméticos", 
-              logo: salvatoreLogo.url,
+            {
+              name: "SALVATORE",
+              cat: "Cosméticos",
+              logo: salvatoreLogo,
               desc: "Produtos cosméticos de alta performance que elevam o padrão de cuidado e beleza.",
-              img: "https://images.unsplash.com/photo-1534422298391-e4f8c170db76?q=80&w=2070&auto=format&fit=crop"
             },
-            { 
-              name: "DOCIGEL", 
-              cat: "Doces e Sobremesas", 
+            {
+              name: "DOCIGEL",
+              cat: "Doces e Sobremesas",
               desc: "Alegria e sabor em produtos que garantem a satisfação do cliente.",
-              logo: docigelLogo.url,
-              img: "https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop"
-            }
-
-
+              logo: docigelLogo,
+            },
           ].map((brand) => (
-            <motion.div 
-              key={brand.name} 
+            <motion.div
+              key={brand.name}
               whileHover={{ y: -5 }}
               className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:border-accent transition-all duration-300"
             >
@@ -312,8 +296,8 @@ function Index() {
               { icon: Target, title: "PORTFÓLIO ESTRATÉGICO", desc: "Marcas e produtos selecionados para diferentes categorias de consumo." },
               { icon: Phone, title: "FOCO EM GIRO", desc: "Atuação comercial orientada para presença, distribuição e desempenho dos produtos." }
             ].map((item) => (
-              <motion.div 
-                key={item.title} 
+              <motion.div
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -363,21 +347,21 @@ function Index() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                title: "ALIMENTOS", 
+              {
+                title: "ALIMENTOS",
                 desc: "Produtos para ampliar e fortalecer o mix do varejo.",
               },
-              { 
-                title: "BEBIDAS", 
+              {
+                title: "BEBIDAS",
                 desc: "Marcas com potencial para diferentes perfis de consumidores.",
               },
-              { 
-                title: "HIGIENE & BELEZA", 
+              {
+                title: "HIGIENE & BELEZA",
                 desc: "Produtos para categorias de alto potencial de consumo.",
               }
             ].map((cat) => (
-              <motion.div 
-                key={cat.title} 
+              <motion.div
+                key={cat.title}
                 whileHover={{ y: -5 }}
                 className="group p-10 bg-secondary/20 rounded-2xl border border-border hover:border-accent transition-all duration-300 text-center space-y-4"
               >
@@ -417,9 +401,9 @@ function Index() {
               viewport={{ once: true }}
               className="w-full"
             >
-              <SPMap 
-                activeRegion={activeRegion} 
-                onRegionClick={(region) => setActiveRegion(region === activeRegion ? null : region)} 
+              <SPMap
+                activeRegion={activeRegion}
+                onRegionClick={(region) => setActiveRegion(region === activeRegion ? null : region)}
               />
             </motion.div>
 
@@ -447,8 +431,8 @@ function Index() {
                   onClick={() => setActiveRegion(region.id === activeRegion ? null : region.id)}
                   className={cn(
                     "p-8 rounded-2xl border transition-all duration-300 cursor-pointer group",
-                    activeRegion === region.id 
-                      ? "bg-primary text-primary-foreground border-primary shadow-xl" 
+                    activeRegion === region.id
+                      ? "bg-primary text-primary-foreground border-primary shadow-xl"
                       : "bg-card border-border hover:border-accent"
                   )}
                 >
@@ -489,9 +473,9 @@ function Index() {
                 <p className="text-sm text-muted-foreground font-medium">
                   Sua cidade não apareceu na lista? Consulte nossa equipe para verificar a disponibilidade de atendimento em sua região.
                 </p>
-                <a 
-                  href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
-                  target="_blank" 
+                <a
+                  href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo."
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 rounded-full font-black text-xs hover:scale-105 transition-transform shadow-lg uppercase tracking-wider"
                 >
@@ -525,7 +509,7 @@ function Index() {
               { city: "PRESIDENTE PRUDENTE", markets: ["Mercado Estrela", "Mercado Nagai"] },
               { city: "MARTINÓPOLIS", markets: ["Irmãos Nagai", "Conal Supercenter"] }
             ].map((item) => (
-              <motion.div 
+              <motion.div
                 key={item.city}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -577,7 +561,7 @@ function Index() {
                 <MessageCircle className="w-5 h-5" /> FALAR COM PEDRO
               </a>
             </div>
-            
+
             <div className="flex items-center gap-6">
               <a href="https://www.instagram.com/gs.representacao/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors font-bold text-sm">
                 <Instagram className="w-5 h-5" /> INSTAGRAM
@@ -594,14 +578,14 @@ function Index() {
       <footer className="bg-secondary/20 py-20 border-t border-border">
         <div className="container mx-auto px-4 grid md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-2 space-y-6">
-            <img src={logoGS.url} alt="GS Representações" className="h-12 w-auto mb-4" loading="lazy" />
+            <img src={logoGS} alt="GS Representações" className="h-12 w-auto mb-4" loading="lazy" />
             <p className="text-muted-foreground max-w-sm text-sm leading-relaxed">
               Conectando grandes marcas ao varejo com relacionamento, estratégia e foco em resultados comerciais sólidos.
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
-                <a 
-                  href="mailto:garcia.e.silva.representacoes@gmail.com" 
+                <a
+                  href="mailto:garcia.e.silva.representacoes@gmail.com"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
                 >
                   <Mail className="w-4 h-4 text-primary" />
@@ -609,9 +593,9 @@ function Index() {
                 </a>
               </div>
               <div className="flex flex-col gap-2">
-                <a 
-                  href="https://wa.me/5518997217576?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
-                  target="_blank" 
+                <a
+                  href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo."
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
                 >
