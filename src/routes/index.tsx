@@ -6,7 +6,6 @@ import { cn } from "../lib/utils";
 import { SPMap } from "../components/SPMap";
 import pedroAsset from "../assets/pedro_silva.png.asset.json";
 import eduardoAsset from "../assets/eduardo_garcia.png.asset.json";
-import heroSupermarketAsset from "../assets/hero_supermarket.png.asset.json";
 import tozziLogo from "../assets/tozzi_logo.png.asset.json";
 import salvatoreLogo from "../assets/salvatore_logo.webp.asset.json";
 import balyLogo from "../assets/baly_logo.png.asset.json";
@@ -49,9 +48,10 @@ function Index() {
           </a>
 
           <div className="md:hidden flex items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-primary"
+              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -560,17 +560,17 @@ function Index() {
           </p>
           <div className="flex flex-col gap-8 justify-center items-center">
             <div className="flex flex-col md:flex-row gap-4 w-full md:max-w-xl mx-auto">
-              <a 
-                href="https://wa.me/5518997217576?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
-                target="_blank" 
+              <a
+                href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo."
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-5 h-5" /> FALAR COM EDUARDO
               </a>
-              <a 
-                href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
-                target="_blank" 
+              <a
+                href="https://wa.me/5518997888797?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Pedro."
+                target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-accent text-accent-foreground px-8 py-4 rounded-full font-black text-sm hover:scale-105 transition-transform shadow-xl flex items-center justify-center gap-2"
               >
@@ -618,9 +618,9 @@ function Index() {
                   <MessageCircle className="w-4 h-4 text-primary" />
                   <span>18 99721-7576 (Eduardo)</span>
                 </a>
-                <a 
-                  href="https://wa.me/5518997217576?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Eduardo." 
-                  target="_blank" 
+                <a
+                  href="https://wa.me/5518997888797?text=Ol%C3%A1%21%20Vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20falar%20com%20o%20Pedro."
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors w-fit"
                 >
