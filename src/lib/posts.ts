@@ -2,6 +2,9 @@ import { requireSupabase, supabase } from "./supabase";
 
 export type PostStatus = "draft" | "published";
 
+/** landscape = paisagem (16:9), square = quadrado (feed do Instagram, 1:1), portrait = retrato (4:5) */
+export type CoverImageRatio = "landscape" | "square" | "portrait";
+
 export interface Post {
   id: string;
   title: string;
@@ -9,6 +12,7 @@ export interface Post {
   excerpt: string;
   content: string;
   cover_image: string | null;
+  cover_image_ratio: CoverImageRatio;
   category: string;
   author: string;
   status: PostStatus;
@@ -17,6 +21,20 @@ export interface Post {
   seo_description: string | null;
   created_at: string;
   updated_at: string;
+}
+
+export const COVER_IMAGE_RATIO_OPTIONS: {
+  value: CoverImageRatio;
+  label: string;
+  className: string;
+}[] = [
+  { value: "landscape", label: "Paisagem (16:9)", className: "aspect-video" },
+  { value: "square", label: "Quadrado — feed Instagram (1:1)", className: "aspect-square" },
+  { value: "portrait", label: "Retrato (4:5)", className: "aspect-[4/5]" },
+];
+
+export function coverImageAspectClass(ratio: CoverImageRatio): string {
+  return COVER_IMAGE_RATIO_OPTIONS.find((o) => o.value === ratio)?.className ?? "aspect-video";
 }
 
 export type PostInput = Omit<Post, "id" | "created_at" | "updated_at">;

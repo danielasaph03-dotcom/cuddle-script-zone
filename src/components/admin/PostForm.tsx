@@ -9,10 +9,21 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { RichTextEditor } from "./RichTextEditor";
+import { cn } from "../../lib/utils";
 import { slugify } from "../../lib/slugify";
 import { uploadArticleImage } from "../../lib/storage";
-import { createPost, updatePost, isSlugTaken, type Post, type PostStatus } from "../../lib/posts";
+import {
+  createPost,
+  updatePost,
+  isSlugTaken,
+  COVER_IMAGE_RATIO_OPTIONS,
+  coverImageAspectClass,
+  type Post,
+  type PostStatus,
+  type CoverImageRatio,
+} from "../../lib/posts";
 
 const schema = z.object({
   title: z.string().min(1, "Informe o título."),
@@ -25,6 +36,7 @@ const schema = z.object({
   author: z.string().min(1, "Informe o autor."),
   published_at: z.string().min(1, "Informe a data."),
   content: z.string().min(1, "Escreva o conteúdo."),
+  cover_image_ratio: z.enum(["landscape", "square", "portrait"]),
   seo_title: z.string().optional(),
   seo_description: z.string().optional(),
 });
@@ -55,6 +67,7 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
       author: post?.author ?? "",
       published_at: toDateInputValue(post?.published_at ?? null),
       content: post?.content ?? "",
+      cover_image_ratio: post?.cover_image_ratio ?? "landscape",
       seo_title: post?.seo_title ?? "",
       seo_description: post?.seo_description ?? "",
     },
@@ -99,6 +112,7 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
         excerpt: values.excerpt,
         content: values.content,
         cover_image: finalCoverImage,
+        cover_image_ratio: values.cover_image_ratio,
         category: values.category,
         author: values.author,
         status,
@@ -222,7 +236,12 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
           <div className="space-y-2">
             <Label>Imagem de capa</Label>
             {coverPreview ? (
-              <div className="relative h-40 w-full overflow-hidden rounded-md border border-border bg-muted">
+              <div
+                className={cn(
+                  "relative w-full max-h-64 overflow-hidden rounded-md border border-border bg-muted",
+                  coverImageAspectClass(form.watch("cover_image_ratio")),
+                )}
+              >
                 <img src={coverPreview} alt="" className="h-full w-full object-cover" />
                 <Button
                   type="button"
@@ -252,6 +271,38 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
               </label>
             )}
           </div>
+
+          <FormField
+            control={form.control}
+            name="cover_image_ratio"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Formato da imagem de capa</FormLabel>
+                <Select
+                  value={field.value}
+                  onValueChange={(value) => field.onChange(value as CoverImageRatio)}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {COVER_IMAGE_RATIO_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  Escolha "Quadrado" para imagens no formato de feed do Instagram, assim elas não
+                  ficam cortadas de forma estranha.
+                </p>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
 
         <FormField
