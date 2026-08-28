@@ -32,15 +32,19 @@ Antes de usar o painel, é preciso configurar o Supabase — leva uns 10 minutos
    duas variáveis também precisam ser configuradas lá, na área de "Environment Variables" da
    hospedagem.
 
-## 4. Rodar a migration (criar as tabelas)
+## 4. Rodar as migrations (criar as tabelas)
+
+Os arquivos ficam em `supabase/migrations/`, numerados em ordem. Num projeto Supabase novo
+(do zero), rode **todos, um de cada vez, na ordem do número**:
 
 1. No painel do Supabase, vá em **SQL Editor → New query**.
-2. Abra o arquivo `supabase/migrations/0001_admin_cms.sql` deste projeto, copie todo o conteúdo
-   e cole no editor.
-3. Clique em **"Run"**.
-4. Isso cria: a tabela `posts`, a tabela `site_settings`, todas as políticas de segurança (RLS)
-   e o bucket de imagens `article-images` — além de já inserir a publicação de exemplo
-   `[EXEMPLO]` pra você ver o painel funcionando.
+2. Abra `supabase/migrations/0001_admin_cms.sql`, copie todo o conteúdo, cole no editor e
+   clique em **"Run"**. Isso cria a tabela `posts`, as políticas de segurança (RLS) e o bucket
+   de imagens `article-images` — além de já inserir a publicação de exemplo `[EXEMPLO]` pra
+   você ver o painel funcionando.
+3. Repita o mesmo passo (nova query, colar, Run) para `0002_cover_image_ratio.sql` e depois
+   para `0003_more_cover_ratios.sql` — esses dois adicionam o campo de formato da imagem de
+   capa e os formatos disponíveis.
 
 ## 5. Criar o primeiro (e único) administrador
 
@@ -66,9 +70,11 @@ Entre com o e-mail e senha criados no passo 5. Você será redirecionado para `/
 ## 7. Criar e publicar uma notícia
 
 1. No menu lateral, clique em **"Nova publicação"**.
-2. Preencha título (o slug/URL é gerado automaticamente, mas pode editar), resumo, categoria,
-   autor, data, imagem de capa e o texto (o editor permite títulos, negrito, itálico, links,
-   listas e citação).
+2. Preencha título e resumo (obrigatórios) — categoria e autor são opcionais, pode deixar em
+   branco que a publicação sai do mesmo jeito. Escolha a data, o formato da imagem de capa
+   (Paisagem 16:9, Quadrado — feed Instagram 1:1, Retrato — feed Instagram 4:5, Retrato —
+   Stories/Reels 9:16, ou Original — sem cortar a imagem), a imagem em si, e o texto (o editor
+   permite títulos, negrito, itálico, links, listas e citação).
 3. Clique em **"Salvar como rascunho"** a qualquer momento para não perder o que escreveu sem
    publicar ainda — rascunhos não aparecem no site público.
 4. Quando estiver pronta, clique em **"Publicar"** — ela aparece automaticamente na Home, em
@@ -76,16 +82,13 @@ Entre com o e-mail e senha criados no passo 5. Você será redirecionado para `/
 
 ## O que foi criado no Supabase
 
-**Tabelas**
-- `posts` — as publicações (título, slug, resumo, conteúdo, imagem de capa, categoria, autor,
-  status, data, campos de SEO).
-- `site_settings` — pares chave/valor para telefone, WhatsApp, e-mail, redes sociais e textos
-  institucionais editáveis em `/admin/conteudo`.
+**Tabela `posts`** — as publicações: título, slug, resumo, conteúdo, imagem de capa, formato da
+imagem de capa (`cover_image_ratio`), categoria (opcional), autor (opcional), status
+(rascunho/publicado), data, campos de SEO.
 
 **Políticas de RLS (Row Level Security)**
-- `posts`: qualquer visitante só enxerga publicações com `status = 'published'`; um usuário
-  autenticado (o admin) enxerga e edita todas.
-- `site_settings`: leitura pública (o site usa esses valores), escrita só para autenticado.
+- Qualquer visitante só enxerga publicações com `status = 'published'`; um usuário autenticado
+  (o admin) enxerga e edita todas.
 - Bucket `article-images`: leitura pública (as imagens aparecem no site), upload/edição/exclusão
   só para autenticado.
 
