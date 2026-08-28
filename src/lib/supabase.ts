@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 
-const url = import.meta.env["VITE_SUPABASE_URL"] as string | undefined;
-const anonKey = import.meta.env["VITE_SUPABASE_ANON_KEY"] as string | undefined;
+const url = import.meta.env.VITE_SUPABASE_URL;
+const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Fica undefined até as env vars serem configuradas (ver ADMIN_SETUP.md) —
 // isso deixa o resto do site (páginas públicas sem depender do painel)
