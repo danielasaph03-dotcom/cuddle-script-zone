@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { LayoutDashboard, Newspaper, FilePlus, FileText, Image, LogOut, Menu } from "lucide-react";
+import { LayoutDashboard, Newspaper, FilePlus, Image, LogOut, Menu } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTitle } from "../ui/sheet";
@@ -11,7 +11,6 @@ const NAV_ITEMS = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/admin/posts", label: "Postagens", icon: Newspaper },
   { to: "/admin/posts/new", label: "Nova publicação", icon: FilePlus },
-  { to: "/admin/conteudo", label: "Conteúdo do site", icon: FileText },
   { to: "/admin/media", label: "Mídia", icon: Image },
 ] as const;
 

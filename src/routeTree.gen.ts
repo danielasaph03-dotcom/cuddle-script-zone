@@ -15,7 +15,6 @@ import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as NoticiasIndexRouteImport } from './routes/noticias/index'
 import { Route as NoticiasSlugRouteImport } from './routes/noticias/$slug'
 import { Route as AdminAuthenticatedIndexRouteImport } from './routes/admin/_authenticated/index'
-import { Route as AdminAuthenticatedConteudoRouteImport } from './routes/admin/_authenticated/conteudo'
 import { Route as AdminAuthenticatedMediaRouteImport } from './routes/admin/_authenticated/media'
 import { Route as AdminAuthenticatedPostsIndexRouteImport } from './routes/admin/_authenticated/posts/index'
 import { Route as AdminAuthenticatedPostsNewRouteImport } from './routes/admin/_authenticated/posts/new'
@@ -51,12 +50,6 @@ const AdminAuthenticatedIndexRoute = AdminAuthenticatedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminAuthenticatedRoute,
 } as any)
-const AdminAuthenticatedConteudoRoute =
-  AdminAuthenticatedConteudoRouteImport.update({
-    id: '/conteudo',
-    path: '/conteudo',
-    getParentRoute: () => AdminAuthenticatedRoute,
-  } as any)
 const AdminAuthenticatedMediaRoute = AdminAuthenticatedMediaRouteImport.update({
   id: '/media',
   path: '/media',
@@ -87,7 +80,6 @@ export interface FileRoutesByFullPath {
   '/admin/login': typeof AdminLoginRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/noticias/': typeof NoticiasIndexRoute
-  '/admin/conteudo': typeof AdminAuthenticatedConteudoRoute
   '/admin/media': typeof AdminAuthenticatedMediaRoute
   '/admin/': typeof AdminAuthenticatedIndexRoute
   '/admin/posts/new': typeof AdminAuthenticatedPostsNewRoute
@@ -99,7 +91,6 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/noticias': typeof NoticiasIndexRoute
-  '/admin/conteudo': typeof AdminAuthenticatedConteudoRoute
   '/admin/media': typeof AdminAuthenticatedMediaRoute
   '/admin': typeof AdminAuthenticatedIndexRoute
   '/admin/posts/new': typeof AdminAuthenticatedPostsNewRoute
@@ -113,7 +104,6 @@ export interface FileRoutesById {
   '/admin/login': typeof AdminLoginRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
   '/noticias/': typeof NoticiasIndexRoute
-  '/admin/_authenticated/conteudo': typeof AdminAuthenticatedConteudoRoute
   '/admin/_authenticated/media': typeof AdminAuthenticatedMediaRoute
   '/admin/_authenticated/': typeof AdminAuthenticatedIndexRoute
   '/admin/_authenticated/posts/new': typeof AdminAuthenticatedPostsNewRoute
@@ -128,7 +118,6 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/noticias/$slug'
     | '/noticias/'
-    | '/admin/conteudo'
     | '/admin/media'
     | '/admin/'
     | '/admin/posts/new'
@@ -140,7 +129,6 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/noticias/$slug'
     | '/noticias'
-    | '/admin/conteudo'
     | '/admin/media'
     | '/admin'
     | '/admin/posts/new'
@@ -153,7 +141,6 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/noticias/$slug'
     | '/noticias/'
-    | '/admin/_authenticated/conteudo'
     | '/admin/_authenticated/media'
     | '/admin/_authenticated/'
     | '/admin/_authenticated/posts/new'
@@ -213,13 +200,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAuthenticatedIndexRouteImport
       parentRoute: typeof AdminAuthenticatedRoute
     }
-    '/admin/_authenticated/conteudo': {
-      id: '/admin/_authenticated/conteudo'
-      path: '/conteudo'
-      fullPath: '/admin/conteudo'
-      preLoaderRoute: typeof AdminAuthenticatedConteudoRouteImport
-      parentRoute: typeof AdminAuthenticatedRoute
-    }
     '/admin/_authenticated/media': {
       id: '/admin/_authenticated/media'
       path: '/media'
@@ -252,7 +232,6 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminAuthenticatedRouteChildren {
-  AdminAuthenticatedConteudoRoute: typeof AdminAuthenticatedConteudoRoute
   AdminAuthenticatedMediaRoute: typeof AdminAuthenticatedMediaRoute
   AdminAuthenticatedIndexRoute: typeof AdminAuthenticatedIndexRoute
   AdminAuthenticatedPostsNewRoute: typeof AdminAuthenticatedPostsNewRoute
@@ -261,7 +240,6 @@ interface AdminAuthenticatedRouteChildren {
 }
 
 const AdminAuthenticatedRouteChildren: AdminAuthenticatedRouteChildren = {
-  AdminAuthenticatedConteudoRoute: AdminAuthenticatedConteudoRoute,
   AdminAuthenticatedMediaRoute: AdminAuthenticatedMediaRoute,
   AdminAuthenticatedIndexRoute: AdminAuthenticatedIndexRoute,
   AdminAuthenticatedPostsNewRoute: AdminAuthenticatedPostsNewRoute,
