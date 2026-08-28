@@ -2,8 +2,12 @@ import { requireSupabase, supabase } from "./supabase";
 
 export type PostStatus = "draft" | "published";
 
-/** landscape = paisagem (16:9), square = quadrado (feed do Instagram, 1:1), portrait = retrato (4:5) */
-export type CoverImageRatio = "landscape" | "square" | "portrait";
+/**
+ * landscape = paisagem (16:9), square = quadrado (feed do Instagram, 1:1),
+ * portrait = retrato (4:5), portrait_story = retrato Stories/Reels (9:16),
+ * original = mantém a proporção original da imagem, sem cortar.
+ */
+export type CoverImageRatio = "landscape" | "square" | "portrait" | "portrait_story" | "original";
 
 export interface Post {
   id: string;
@@ -30,11 +34,22 @@ export const COVER_IMAGE_RATIO_OPTIONS: {
 }[] = [
   { value: "landscape", label: "Paisagem (16:9)", className: "aspect-video" },
   { value: "square", label: "Quadrado — feed Instagram (1:1)", className: "aspect-square" },
-  { value: "portrait", label: "Retrato (4:5)", className: "aspect-[4/5]" },
+  { value: "portrait", label: "Retrato — feed Instagram (4:5)", className: "aspect-[4/5]" },
+  {
+    value: "portrait_story",
+    label: "Retrato — Stories/Reels (9:16)",
+    className: "aspect-[9/16]",
+  },
+  { value: "original", label: "Original (sem cortar)", className: "" },
 ];
 
 export function coverImageAspectClass(ratio: CoverImageRatio): string {
   return COVER_IMAGE_RATIO_OPTIONS.find((o) => o.value === ratio)?.className ?? "aspect-video";
+}
+
+/** "original" não tem proporção fixa: a imagem usa a altura natural em vez de preencher a caixa. */
+export function coverImageIsOriginal(ratio: CoverImageRatio): boolean {
+  return ratio === "original";
 }
 
 export type PostInput = Omit<Post, "id" | "created_at" | "updated_at">;

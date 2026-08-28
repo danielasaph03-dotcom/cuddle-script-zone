@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Post } from "../lib/posts";
-import { formatarData, coverImageAspectClass } from "../lib/posts";
+import { formatarData, coverImageAspectClass, coverImageIsOriginal } from "../lib/posts";
 import { cn } from "../lib/utils";
 
 export function NoticiaCard({ noticia }: { noticia: Post }) {
@@ -23,7 +23,10 @@ export function NoticiaCard({ noticia }: { noticia: Post }) {
             <img
               src={noticia.cover_image}
               alt={noticia.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              className={cn(
+                "w-full group-hover:scale-110 transition-transform duration-500",
+                coverImageIsOriginal(noticia.cover_image_ratio) ? "h-auto" : "h-full object-cover",
+              )}
               loading="lazy"
             />
           )}
@@ -31,9 +34,11 @@ export function NoticiaCard({ noticia }: { noticia: Post }) {
 
         <div className="p-6 space-y-3 flex flex-col flex-1">
           <div className="flex items-center gap-3">
-            <span className="text-[10px] font-bold uppercase tracking-widest bg-accent/20 text-primary px-2 py-1 rounded">
-              {noticia.category}
-            </span>
+            {noticia.category && (
+              <span className="text-[10px] font-bold uppercase tracking-widest bg-accent/20 text-primary px-2 py-1 rounded">
+                {noticia.category}
+              </span>
+            )}
             <span className="text-xs text-muted-foreground font-medium">
               {noticia.published_at && formatarData(noticia.published_at)}
             </span>

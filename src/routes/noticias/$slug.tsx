@@ -12,6 +12,7 @@ import {
   calcularTempoLeitura,
   formatarData,
   coverImageAspectClass,
+  coverImageIsOriginal,
 } from "../../lib/posts";
 
 export const Route = createFileRoute("/noticias/$slug")({
@@ -80,9 +81,11 @@ function NoticiaDetalhe() {
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] font-bold uppercase tracking-widest bg-accent/20 text-primary px-2 py-1 rounded">
-                {noticia.category}
-              </span>
+              {noticia.category && (
+                <span className="text-[10px] font-bold uppercase tracking-widest bg-accent/20 text-primary px-2 py-1 rounded">
+                  {noticia.category}
+                </span>
+              )}
               {noticia.published_at && (
                 <span className="text-xs text-muted-foreground font-medium">
                   {formatarData(noticia.published_at)}
@@ -97,7 +100,9 @@ function NoticiaDetalhe() {
               {noticia.title}
             </h1>
 
-            <p className="text-sm text-muted-foreground font-medium mb-8">Por {noticia.author}</p>
+            {noticia.author && (
+              <p className="text-sm text-muted-foreground font-medium mb-8">Por {noticia.author}</p>
+            )}
           </motion.div>
 
           {noticia.cover_image && (
@@ -113,7 +118,12 @@ function NoticiaDetalhe() {
               <img
                 src={noticia.cover_image}
                 alt={noticia.title}
-                className="w-full h-full object-cover"
+                className={cn(
+                  "w-full",
+                  coverImageIsOriginal(noticia.cover_image_ratio)
+                    ? "h-auto"
+                    : "h-full object-cover",
+                )}
                 fetchPriority="high"
               />
             </motion.div>

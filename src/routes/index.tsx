@@ -11,6 +11,7 @@ import {
   Mail,
   MessageCircle,
   MapPin,
+  Newspaper,
 } from "lucide-react";
 import { cn } from "../lib/utils";
 import { SPMap } from "../components/SPMap";
@@ -33,6 +34,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const noticiasDestaque = Route.useLoaderData();
+  const ultimaNoticia = noticiasDestaque[0];
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
 
   return (
@@ -90,6 +92,26 @@ function Index() {
           </div>
         </motion.div>
       </section>
+
+      {/* Destaque sutil da última notícia */}
+      {ultimaNoticia && (
+        <section className="border-y border-border bg-secondary/20">
+          <div className="container mx-auto px-4">
+            <Link
+              to="/noticias/$slug"
+              params={{ slug: ultimaNoticia.slug }}
+              className="group flex items-center gap-3 py-3 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Newspaper className="w-4 h-4 text-accent shrink-0" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-accent shrink-0">
+                Novidade
+              </span>
+              <span className="truncate font-medium">{ultimaNoticia.title}</span>
+              <ArrowRight className="w-4 h-4 shrink-0 ml-auto group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* A GS / Quem Somos */}
       <section id="a-gs" className="py-24 bg-secondary/30">

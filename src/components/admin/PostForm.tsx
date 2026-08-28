@@ -20,6 +20,7 @@ import {
   isSlugTaken,
   COVER_IMAGE_RATIO_OPTIONS,
   coverImageAspectClass,
+  coverImageIsOriginal,
   type Post,
   type PostStatus,
   type CoverImageRatio,
@@ -32,11 +33,11 @@ const schema = z.object({
     .min(1, "Informe o slug.")
     .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "Use apenas letras minúsculas, números e hífens."),
   excerpt: z.string().min(1, "Informe o resumo."),
-  category: z.string().min(1, "Informe a categoria."),
-  author: z.string().min(1, "Informe o autor."),
+  category: z.string(),
+  author: z.string(),
   published_at: z.string().min(1, "Informe a data."),
   content: z.string().min(1, "Escreva o conteúdo."),
-  cover_image_ratio: z.enum(["landscape", "square", "portrait"]),
+  cover_image_ratio: z.enum(["landscape", "square", "portrait", "portrait_story", "original"]),
   seo_title: z.string().optional(),
   seo_description: z.string().optional(),
 });
@@ -196,7 +197,7 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
             name="category"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Categoria</FormLabel>
+                <FormLabel>Categoria (opcional)</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Ex.: Tendências" />
                 </FormControl>
@@ -210,7 +211,7 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
             name="author"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Autor</FormLabel>
+                <FormLabel>Autor (opcional)</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -242,7 +243,16 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
                   coverImageAspectClass(form.watch("cover_image_ratio")),
                 )}
               >
-                <img src={coverPreview} alt="" className="h-full w-full object-cover" />
+                <img
+                  src={coverPreview}
+                  alt=""
+                  className={cn(
+                    "w-full",
+                    coverImageIsOriginal(form.watch("cover_image_ratio"))
+                      ? "h-auto"
+                      : "h-full object-cover",
+                  )}
+                />
                 <Button
                   type="button"
                   variant="secondary"
