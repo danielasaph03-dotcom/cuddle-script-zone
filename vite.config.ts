@@ -6,6 +6,24 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// TEMP DEBUG — remove once the Vercel env var issue is confirmed fixed.
+console.log(
+  "[debug] process.env.VITE_SUPABASE_URL present:",
+  Boolean(process.env["VITE_SUPABASE_URL"]),
+  "| length:",
+  process.env["VITE_SUPABASE_URL"]?.length ?? 0,
+);
+console.log(
+  "[debug] process.env.VITE_SUPABASE_ANON_KEY present:",
+  Boolean(process.env["VITE_SUPABASE_ANON_KEY"]),
+  "| length:",
+  process.env["VITE_SUPABASE_ANON_KEY"]?.length ?? 0,
+);
+console.log(
+  "[debug] VITE_* keys in process.env:",
+  Object.keys(process.env).filter((k) => k.startsWith("VITE_")),
+);
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
