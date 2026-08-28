@@ -21,7 +21,7 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src={logoGS} alt="GS Representações" className="h-10 w-auto" fetchPriority="high" />
+            <img src={logoGS} alt="GS Representações" className="h-14 w-auto" fetchPriority="high" />
           </div>
           <nav className="hidden md:flex gap-8 items-center text-sm font-semibold">
             <a href="#inicio" className="hover:text-primary transition-colors">Início</a>

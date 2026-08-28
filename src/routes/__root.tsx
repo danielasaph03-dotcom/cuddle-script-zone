@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -78,10 +79,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "GS Representações | Conectando Marcas ao Varejo" },
-      { name: "description", content: "Representação comercial premium para alimentos, bebidas e cosméticos. Conectamos grandes marcas ao varejo com estratégia e relacionamento." },
+      {
+        name: "description",
+        content:
+          "Representação comercial premium para alimentos, bebidas e cosméticos. Conectamos grandes marcas ao varejo com estratégia e relacionamento.",
+      },
       { name: "author", content: "GS Representações" },
       { property: "og:title", content: "GS Representações | Representação Comercial" },
-      { property: "og:description", content: "Conectamos grandes marcas ao varejo com relacionamento, estratégia e conhecimento de mercado." },
+      {
+        property: "og:description",
+        content:
+          "Conectamos grandes marcas ao varejo com relacionamento, estratégia e conhecimento de mercado.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@GSRepresentacoes" },
@@ -123,6 +132,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <Toaster />
     </QueryClientProvider>
   );
 }

@@ -105,3 +105,67 @@
     color: var(--color-foreground);
   }
 }
+
+/* Corpo de uma matéria de /noticias/[slug] — conteúdo vem como HTML (do
+   editor do painel /admin), não JSX, então não pode receber className por
+   elemento; estas regras replicam o mesmo tratamento visual usado no resto
+   do site (ver src/components/admin/RichTextEditor.tsx). */
+@layer components {
+  .noticia-content {
+    color: var(--color-muted-foreground);
+  }
+  .noticia-content p {
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .noticia-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .noticia-content h2:first-child {
+    margin-top: 0;
+  }
+  .noticia-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .noticia-content ul,
+  .noticia-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .noticia-content ul {
+    list-style-type: disc;
+  }
+  .noticia-content ol {
+    list-style-type: decimal;
+  }
+  .noticia-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.75;
+  }
+  .noticia-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .noticia-content blockquote {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--color-muted-foreground);
+    margin-bottom: 1.5rem;
+  }
+  .noticia-content img {
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}

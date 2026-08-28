@@ -10,33 +10,163 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminAuthenticatedRouteImport } from './routes/admin/_authenticated'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
+import { Route as NoticiasIndexRouteImport } from './routes/noticias/index'
+import { Route as NoticiasSlugRouteImport } from './routes/noticias/$slug'
+import { Route as AdminAuthenticatedIndexRouteImport } from './routes/admin/_authenticated/index'
+import { Route as AdminAuthenticatedConteudoRouteImport } from './routes/admin/_authenticated/conteudo'
+import { Route as AdminAuthenticatedMediaRouteImport } from './routes/admin/_authenticated/media'
+import { Route as AdminAuthenticatedPostsIndexRouteImport } from './routes/admin/_authenticated/posts/index'
+import { Route as AdminAuthenticatedPostsNewRouteImport } from './routes/admin/_authenticated/posts/new'
+import { Route as AdminAuthenticatedPostsIdEditRouteImport } from './routes/admin/_authenticated/posts/$id/edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAuthenticatedRoute = AdminAuthenticatedRouteImport.update({
+  id: '/admin/_authenticated',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasIndexRoute = NoticiasIndexRouteImport.update({
+  id: '/noticias/',
+  path: '/noticias/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
+  id: '/noticias/$slug',
+  path: '/noticias/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAuthenticatedIndexRoute = AdminAuthenticatedIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminAuthenticatedRoute,
+} as any)
+const AdminAuthenticatedConteudoRoute =
+  AdminAuthenticatedConteudoRouteImport.update({
+    id: '/conteudo',
+    path: '/conteudo',
+    getParentRoute: () => AdminAuthenticatedRoute,
+  } as any)
+const AdminAuthenticatedMediaRoute = AdminAuthenticatedMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminAuthenticatedRoute,
+} as any)
+const AdminAuthenticatedPostsIndexRoute =
+  AdminAuthenticatedPostsIndexRouteImport.update({
+    id: '/posts/',
+    path: '/posts/',
+    getParentRoute: () => AdminAuthenticatedRoute,
+  } as any)
+const AdminAuthenticatedPostsNewRoute =
+  AdminAuthenticatedPostsNewRouteImport.update({
+    id: '/posts/new',
+    path: '/posts/new',
+    getParentRoute: () => AdminAuthenticatedRoute,
+  } as any)
+const AdminAuthenticatedPostsIdEditRoute =
+  AdminAuthenticatedPostsIdEditRouteImport.update({
+    id: '/posts/$id/edit',
+    path: '/posts/$id/edit',
+    getParentRoute: () => AdminAuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminAuthenticatedRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
+  '/noticias/': typeof NoticiasIndexRoute
+  '/admin/conteudo': typeof AdminAuthenticatedConteudoRoute
+  '/admin/media': typeof AdminAuthenticatedMediaRoute
+  '/admin/': typeof AdminAuthenticatedIndexRoute
+  '/admin/posts/new': typeof AdminAuthenticatedPostsNewRoute
+  '/admin/posts/': typeof AdminAuthenticatedPostsIndexRoute
+  '/admin/posts/$id/edit': typeof AdminAuthenticatedPostsIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
+  '/noticias': typeof NoticiasIndexRoute
+  '/admin/conteudo': typeof AdminAuthenticatedConteudoRoute
+  '/admin/media': typeof AdminAuthenticatedMediaRoute
+  '/admin': typeof AdminAuthenticatedIndexRoute
+  '/admin/posts/new': typeof AdminAuthenticatedPostsNewRoute
+  '/admin/posts': typeof AdminAuthenticatedPostsIndexRoute
+  '/admin/posts/$id/edit': typeof AdminAuthenticatedPostsIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin/_authenticated': typeof AdminAuthenticatedRouteWithChildren
+  '/admin/login': typeof AdminLoginRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
+  '/noticias/': typeof NoticiasIndexRoute
+  '/admin/_authenticated/conteudo': typeof AdminAuthenticatedConteudoRoute
+  '/admin/_authenticated/media': typeof AdminAuthenticatedMediaRoute
+  '/admin/_authenticated/': typeof AdminAuthenticatedIndexRoute
+  '/admin/_authenticated/posts/new': typeof AdminAuthenticatedPostsNewRoute
+  '/admin/_authenticated/posts/': typeof AdminAuthenticatedPostsIndexRoute
+  '/admin/_authenticated/posts/$id/edit': typeof AdminAuthenticatedPostsIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/admin/login'
+    | '/noticias/$slug'
+    | '/noticias/'
+    | '/admin/conteudo'
+    | '/admin/media'
+    | '/admin/'
+    | '/admin/posts/new'
+    | '/admin/posts/'
+    | '/admin/posts/$id/edit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin/login'
+    | '/noticias/$slug'
+    | '/noticias'
+    | '/admin/conteudo'
+    | '/admin/media'
+    | '/admin'
+    | '/admin/posts/new'
+    | '/admin/posts'
+    | '/admin/posts/$id/edit'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin/_authenticated'
+    | '/admin/login'
+    | '/noticias/$slug'
+    | '/noticias/'
+    | '/admin/_authenticated/conteudo'
+    | '/admin/_authenticated/media'
+    | '/admin/_authenticated/'
+    | '/admin/_authenticated/posts/new'
+    | '/admin/_authenticated/posts/'
+    | '/admin/_authenticated/posts/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminAuthenticatedRoute: typeof AdminAuthenticatedRouteWithChildren
+  AdminLoginRoute: typeof AdminLoginRoute
+  NoticiasSlugRoute: typeof NoticiasSlugRoute
+  NoticiasIndexRoute: typeof NoticiasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +178,106 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/_authenticated': {
+      id: '/admin/_authenticated'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminAuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias/': {
+      id: '/noticias/'
+      path: '/noticias'
+      fullPath: '/noticias/'
+      preLoaderRoute: typeof NoticiasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias/$slug': {
+      id: '/noticias/$slug'
+      path: '/noticias/$slug'
+      fullPath: '/noticias/$slug'
+      preLoaderRoute: typeof NoticiasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/_authenticated/': {
+      id: '/admin/_authenticated/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminAuthenticatedIndexRouteImport
+      parentRoute: typeof AdminAuthenticatedRoute
+    }
+    '/admin/_authenticated/conteudo': {
+      id: '/admin/_authenticated/conteudo'
+      path: '/conteudo'
+      fullPath: '/admin/conteudo'
+      preLoaderRoute: typeof AdminAuthenticatedConteudoRouteImport
+      parentRoute: typeof AdminAuthenticatedRoute
+    }
+    '/admin/_authenticated/media': {
+      id: '/admin/_authenticated/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminAuthenticatedMediaRouteImport
+      parentRoute: typeof AdminAuthenticatedRoute
+    }
+    '/admin/_authenticated/posts/': {
+      id: '/admin/_authenticated/posts/'
+      path: '/posts'
+      fullPath: '/admin/posts/'
+      preLoaderRoute: typeof AdminAuthenticatedPostsIndexRouteImport
+      parentRoute: typeof AdminAuthenticatedRoute
+    }
+    '/admin/_authenticated/posts/new': {
+      id: '/admin/_authenticated/posts/new'
+      path: '/posts/new'
+      fullPath: '/admin/posts/new'
+      preLoaderRoute: typeof AdminAuthenticatedPostsNewRouteImport
+      parentRoute: typeof AdminAuthenticatedRoute
+    }
+    '/admin/_authenticated/posts/$id/edit': {
+      id: '/admin/_authenticated/posts/$id/edit'
+      path: '/posts/$id/edit'
+      fullPath: '/admin/posts/$id/edit'
+      preLoaderRoute: typeof AdminAuthenticatedPostsIdEditRouteImport
+      parentRoute: typeof AdminAuthenticatedRoute
+    }
   }
 }
 
+interface AdminAuthenticatedRouteChildren {
+  AdminAuthenticatedConteudoRoute: typeof AdminAuthenticatedConteudoRoute
+  AdminAuthenticatedMediaRoute: typeof AdminAuthenticatedMediaRoute
+  AdminAuthenticatedIndexRoute: typeof AdminAuthenticatedIndexRoute
+  AdminAuthenticatedPostsNewRoute: typeof AdminAuthenticatedPostsNewRoute
+  AdminAuthenticatedPostsIndexRoute: typeof AdminAuthenticatedPostsIndexRoute
+  AdminAuthenticatedPostsIdEditRoute: typeof AdminAuthenticatedPostsIdEditRoute
+}
+
+const AdminAuthenticatedRouteChildren: AdminAuthenticatedRouteChildren = {
+  AdminAuthenticatedConteudoRoute: AdminAuthenticatedConteudoRoute,
+  AdminAuthenticatedMediaRoute: AdminAuthenticatedMediaRoute,
+  AdminAuthenticatedIndexRoute: AdminAuthenticatedIndexRoute,
+  AdminAuthenticatedPostsNewRoute: AdminAuthenticatedPostsNewRoute,
+  AdminAuthenticatedPostsIndexRoute: AdminAuthenticatedPostsIndexRoute,
+  AdminAuthenticatedPostsIdEditRoute: AdminAuthenticatedPostsIdEditRoute,
+}
+
+const AdminAuthenticatedRouteWithChildren =
+  AdminAuthenticatedRoute._addFileChildren(AdminAuthenticatedRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminAuthenticatedRoute: AdminAuthenticatedRouteWithChildren,
+  AdminLoginRoute: AdminLoginRoute,
+  NoticiasSlugRoute: NoticiasSlugRoute,
+  NoticiasIndexRoute: NoticiasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
