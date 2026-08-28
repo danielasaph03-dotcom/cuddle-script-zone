@@ -15,7 +15,7 @@ export function NoticiaCard({ noticia }: { noticia: Post }) {
       >
         <div
           className={cn(
-            "bg-muted overflow-hidden max-h-72",
+            "bg-muted overflow-hidden",
             coverImageAspectClass(noticia.cover_image_ratio),
           )}
         >

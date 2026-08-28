@@ -106,7 +106,7 @@ function NoticiaDetalhe() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className={cn(
-                "w-full max-h-[560px] rounded-2xl overflow-hidden bg-muted mb-12",
+                "w-full rounded-2xl overflow-hidden bg-muted mb-12",
                 coverImageAspectClass(noticia.cover_image_ratio),
               )}
             >

@@ -238,7 +238,7 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
             {coverPreview ? (
               <div
                 className={cn(
-                  "relative w-full max-h-64 overflow-hidden rounded-md border border-border bg-muted",
+                  "relative w-full overflow-hidden rounded-md border border-border bg-muted",
                   coverImageAspectClass(form.watch("cover_image_ratio")),
                 )}
               >
