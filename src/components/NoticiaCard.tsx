@@ -2,7 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Post } from "../lib/posts";
-import { formatarData } from "../lib/posts";
+import { formatarData, coverImageAspectClass } from "../lib/posts";
+import { cn } from "../lib/utils";
 
 export function NoticiaCard({ noticia }: { noticia: Post }) {
   return (
@@ -12,7 +13,12 @@ export function NoticiaCard({ noticia }: { noticia: Post }) {
         params={{ slug: noticia.slug }}
         className="group flex flex-col h-full bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:border-accent transition-all duration-300"
       >
-        <div className="h-48 bg-muted overflow-hidden">
+        <div
+          className={cn(
+            "bg-muted overflow-hidden max-h-72",
+            coverImageAspectClass(noticia.cover_image_ratio),
+          )}
+        >
           {noticia.cover_image && (
             <img
               src={noticia.cover_image}
