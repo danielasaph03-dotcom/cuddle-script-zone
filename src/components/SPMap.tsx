@@ -29,9 +29,9 @@ export const SPMap = ({
         />
         <motion.path
           d="M500,300 L600,250 L700,350 L600,450 Z"
-          fill={activeRegion === 'Sorocaba' ? 'var(--color-primary)' : 'transparent'}
+          fill={activeRegion === 'Londrina' ? 'var(--color-primary)' : 'transparent'}
           className="cursor-pointer opacity-20 hover:opacity-30 transition-all"
-          onClick={() => onRegionClick('Sorocaba')}
+          onClick={() => onRegionClick('Londrina')}
         />
 
         {/* Animated Markers */}
@@ -49,8 +49,8 @@ export const SPMap = ({
           <text x="250" y="230" textAnchor="middle" className="text-[12px] font-bold fill-primary pointer-events-none uppercase tracking-tighter">P. Prudente</text>
         </g>
 
-        {/* Sorocaba Marker */}
-        <g onClick={() => onRegionClick('Sorocaba')} className="cursor-pointer">
+        {/* Londrina Marker */}
+        <g onClick={() => onRegionClick('Londrina')} className="cursor-pointer">
           <circle cx="600" cy="350" r="8" className="fill-accent shadow-lg" />
           <motion.circle
             cx="600"
@@ -60,7 +60,7 @@ export const SPMap = ({
             animate={{ r: [8, 20], opacity: [0.8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
-          <text x="600" y="330" textAnchor="middle" className="text-[12px] font-bold fill-primary pointer-events-none uppercase tracking-tighter">Sorocaba</text>
+          <text x="600" y="330" textAnchor="middle" className="text-[12px] font-bold fill-primary pointer-events-none uppercase tracking-tighter">Londrina</text>
         </g>
       </svg>
       
@@ -75,8 +75,8 @@ export const SPMap = ({
           >
             <h4 className="font-bold text-primary mb-2 uppercase text-xs tracking-widest">{activeRegion} e Região</h4>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              {activeRegion === 'Sorocaba' 
-                ? "Sorocaba, Votorantim, Itu, Salto, São Roque, Araçoiaba da Serra e Mairinque."
+              {activeRegion === 'Londrina'
+                ? "Londrina, Cambé, Ibiporã, Rolândia, Arapongas, Jataizinho e Tamarana (PR)."
                 : "Presidente Prudente, Álvares Machado, Regente Feijó, Martinópolis, Rancharia, Presidente Bernardes e Presidente Venceslau."}
             </p>
             <button 

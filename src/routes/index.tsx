@@ -447,8 +447,8 @@ function Index() {
               </h2>
               <div className="w-20 h-1 bg-accent mx-auto" />
               <p className="text-muted-foreground text-lg">
-                Atendemos empresas em diferentes regiões do estado de São Paulo, oferecendo
-                agilidade, proximidade e um atendimento personalizado.
+                Atendemos empresas em diferentes regiões, oferecendo agilidade, proximidade e um
+                atendimento personalizado.
               </p>
             </motion.div>
           </div>
@@ -471,11 +471,10 @@ function Index() {
             <div className="space-y-6">
               {[
                 {
-                  id: "Sorocaba",
-                  title: "Sorocaba e região",
-                  text: "Atendimento em Sorocaba e nas principais cidades próximas.",
-                  cities:
-                    "Sorocaba, Votorantim, Itu, Salto, São Roque, Araçoiaba da Serra e Mairinque.",
+                  id: "Londrina",
+                  title: "Londrina e região (PR)",
+                  text: "Atendimento em Londrina e nas principais cidades do Norte do Paraná.",
+                  cities: "Londrina, Cambé, Ibiporã, Rolândia, Arapongas, Jataizinho e Tamarana.",
                 },
                 {
                   id: "Presidente Prudente",
