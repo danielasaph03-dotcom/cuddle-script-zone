@@ -471,10 +471,10 @@ function Index() {
             <div className="space-y-6">
               {[
                 {
-                  id: "Londrina",
-                  title: "Londrina e região (PR)",
-                  text: "Atendimento em Londrina e nas principais cidades do Norte do Paraná.",
-                  cities: "Londrina, Cambé, Ibiporã, Rolândia, Arapongas, Jataizinho e Tamarana.",
+                  id: "Curitiba",
+                  title: "Curitiba e região (PR)",
+                  text: "Atendimento em Curitiba e nas principais cidades do Paraná.",
+                  cities: "Curitiba, Ponta Grossa, Londrina e Cambé.",
                 },
                 {
                   id: "Presidente Prudente",
