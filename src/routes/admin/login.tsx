@@ -6,7 +6,6 @@ import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import { signIn } from "../../lib/auth";
-import { supabase } from "../../lib/supabase";
 import logoGS from "../../assets/logo-gs.png";
 
 export const Route = createFileRoute("/admin/login")({
@@ -24,12 +23,6 @@ function AdminLogin() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
-
-    if (!supabase) {
-      setError("Supabase não está configurado neste ambiente ainda.");
-      return;
-    }
-
     setLoading(true);
     try {
       await signIn(email, password);

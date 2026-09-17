@@ -1,4 +1,8 @@
-import { requireSupabase, supabase } from "./supabase";
+import { randomUUID } from "node:crypto";
+import { createServerFn } from "@tanstack/react-start";
+import { getCookie } from "@tanstack/react-start/server";
+import { getPool, isDbConfigured } from "./db";
+import { verifySessionToken, SESSION_COOKIE_NAME } from "./cookies";
 
 export type PostStatus = "draft" | "published";
 
@@ -56,30 +60,102 @@ export type PostInput = Omit<Post, "id" | "created_at" | "updated_at">;
 
 const TABLE = "posts";
 
-/** Publicações visíveis ao público, mais recentes primeiro (usa a RLS pública). */
-export async function listPublishedPosts(limit?: number): Promise<Post[]> {
-  if (!supabase) return [];
-  let query = supabase
-    .from(TABLE)
-    .select("*")
-    .eq("status", "published")
-    .order("published_at", { ascending: false });
-  if (limit) query = query.limit(limit);
-  const { data, error } = await query;
-  if (error) throw error;
-  return data ?? [];
+const UPDATABLE_COLUMNS = new Set<keyof PostInput>([
+  "title",
+  "slug",
+  "excerpt",
+  "content",
+  "cover_image",
+  "cover_image_ratio",
+  "category",
+  "author",
+  "status",
+  "published_at",
+  "seo_title",
+  "seo_description",
+]);
+
+interface PostRow {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  cover_image: string | null;
+  cover_image_ratio: CoverImageRatio;
+  category: string;
+  author: string;
+  status: PostStatus;
+  published_at: Date | string | null;
+  seo_title: string | null;
+  seo_description: string | null;
+  created_at: Date | string;
+  updated_at: Date | string;
 }
 
+function toIso(value: Date | string): string {
+  return value instanceof Date ? value.toISOString() : new Date(value).toISOString();
+}
+
+function firstRowOrThrow(rows: PostRow[]): PostRow {
+  const row = rows[0];
+  if (!row) throw new Error("Publicação não encontrada.");
+  return row;
+}
+
+function rowToPost(row: PostRow): Post {
+  return {
+    ...row,
+    published_at: row.published_at ? toIso(row.published_at) : null,
+    created_at: toIso(row.created_at),
+    updated_at: toIso(row.updated_at),
+  };
+}
+
+/** Lança se não houver uma sessão de admin válida no cookie da requisição atual. */
+function requireAdmin(): void {
+  const token = getCookie(SESSION_COOKIE_NAME);
+  if (!verifySessionToken(token)) {
+    throw new Error("Não autenticado.");
+  }
+}
+
+// -------------------------------------------------------------------------
+// Público — usado pelo site (Home, /noticias, /noticias/$slug).
+// -------------------------------------------------------------------------
+
+const _listPublishedPosts = createServerFn({ method: "GET" })
+  .validator((limit: number | undefined) => limit)
+  .handler(async ({ data: limit }) => {
+    if (!isDbConfigured) return [];
+    const pool = getPool();
+    const sql = limit
+      ? "SELECT * FROM posts WHERE status = 'published' ORDER BY published_at DESC LIMIT ?"
+      : "SELECT * FROM posts WHERE status = 'published' ORDER BY published_at DESC";
+    const [rows] = await pool.query(sql, limit ? [limit] : []);
+    return (rows as PostRow[]).map(rowToPost);
+  });
+
+/** Publicações visíveis ao público, mais recentes primeiro. */
+export async function listPublishedPosts(limit?: number): Promise<Post[]> {
+  return _listPublishedPosts({ data: limit });
+}
+
+const _getPublishedPostBySlug = createServerFn({ method: "GET" })
+  .validator((slug: string) => slug)
+  .handler(async ({ data: slug }) => {
+    if (!isDbConfigured) return null;
+    const pool = getPool();
+    const [rows] = await pool.query(
+      "SELECT * FROM posts WHERE status = 'published' AND slug = ? LIMIT 1",
+      [slug],
+    );
+    const row = (rows as PostRow[])[0];
+    return row ? rowToPost(row) : null;
+  });
+
 export async function getPublishedPostBySlug(slug: string): Promise<Post | null> {
-  if (!supabase) return null;
-  const { data, error } = await supabase
-    .from(TABLE)
-    .select("*")
-    .eq("status", "published")
-    .eq("slug", slug)
-    .maybeSingle();
-  if (error) throw error;
-  return data;
+  return _getPublishedPostBySlug({ data: slug });
 }
 
 /** Publicações relacionadas: mesma categoria primeiro, completa com as mais recentes. */
@@ -92,58 +168,113 @@ export async function getRelatedPosts(post: Post, limit = 3): Promise<Post[]> {
 }
 
 // -------------------------------------------------------------------------
-// Abaixo: só usado dentro do painel /admin (exige usuário autenticado, a
-// RLS bloqueia quem não estiver logado).
+// Abaixo: só usado dentro do painel /admin (exige sessão de admin válida).
 // -------------------------------------------------------------------------
+
+const _listAllPosts = createServerFn({ method: "GET" }).handler(async () => {
+  requireAdmin();
+  const [rows] = await getPool().query("SELECT * FROM posts ORDER BY created_at DESC");
+  return (rows as PostRow[]).map(rowToPost);
+});
 
 /** Todas as publicações (rascunho + publicadas), mais recentes primeiro. */
 export async function listAllPosts(): Promise<Post[]> {
-  const { data, error } = await requireSupabase()
-    .from(TABLE)
-    .select("*")
-    .order("created_at", { ascending: false });
-  if (error) throw error;
-  return data ?? [];
+  return _listAllPosts();
 }
+
+const _getPostById = createServerFn({ method: "GET" })
+  .validator((id: string) => id)
+  .handler(async ({ data: id }) => {
+    requireAdmin();
+    const [rows] = await getPool().query("SELECT * FROM posts WHERE id = ?", [id]);
+    const row = (rows as PostRow[])[0];
+    return row ? rowToPost(row) : null;
+  });
 
 export async function getPostById(id: string): Promise<Post | null> {
-  const { data, error } = await requireSupabase()
-    .from(TABLE)
-    .select("*")
-    .eq("id", id)
-    .maybeSingle();
-  if (error) throw error;
-  return data;
+  return _getPostById({ data: id });
 }
+
+const _isSlugTaken = createServerFn({ method: "GET" })
+  .validator((data: { slug: string; excludeId?: string }) => data)
+  .handler(async ({ data }) => {
+    requireAdmin();
+    const sql = data.excludeId
+      ? "SELECT id FROM posts WHERE slug = ? AND id <> ? LIMIT 1"
+      : "SELECT id FROM posts WHERE slug = ? LIMIT 1";
+    const params = data.excludeId ? [data.slug, data.excludeId] : [data.slug];
+    const [rows] = await getPool().query(sql, params);
+    return (rows as unknown[]).length > 0;
+  });
 
 export async function isSlugTaken(slug: string, excludeId?: string): Promise<boolean> {
-  let query = requireSupabase().from(TABLE).select("id").eq("slug", slug);
-  if (excludeId) query = query.neq("id", excludeId);
-  const { data, error } = await query.maybeSingle();
-  if (error) throw error;
-  return data !== null;
+  return _isSlugTaken({ data: excludeId ? { slug, excludeId } : { slug } });
 }
+
+const _createPost = createServerFn({ method: "POST" })
+  .validator((input: PostInput) => input)
+  .handler(async ({ data: input }) => {
+    requireAdmin();
+    const pool = getPool();
+    const id = randomUUID();
+    await pool.query(
+      `INSERT INTO ${TABLE}
+        (id, title, slug, excerpt, content, cover_image, cover_image_ratio, category, author, status, published_at, seo_title, seo_description)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        id,
+        input.title,
+        input.slug,
+        input.excerpt,
+        input.content,
+        input.cover_image,
+        input.cover_image_ratio,
+        input.category,
+        input.author,
+        input.status,
+        input.published_at,
+        input.seo_title,
+        input.seo_description,
+      ],
+    );
+    const [rows] = await pool.query("SELECT * FROM posts WHERE id = ?", [id]);
+    return rowToPost(firstRowOrThrow(rows as PostRow[]));
+  });
 
 export async function createPost(input: PostInput): Promise<Post> {
-  const { data, error } = await requireSupabase().from(TABLE).insert(input).select().single();
-  if (error) throw error;
-  return data;
+  return _createPost({ data: input });
 }
+
+const _updatePost = createServerFn({ method: "POST" })
+  .validator((data: { id: string; input: Partial<PostInput> }) => data)
+  .handler(async ({ data }) => {
+    requireAdmin();
+    const pool = getPool();
+    const entries = Object.entries(data.input).filter(
+      ([key, value]) => value !== undefined && UPDATABLE_COLUMNS.has(key as keyof PostInput),
+    );
+    if (entries.length > 0) {
+      const setClause = entries.map(([key]) => `${key} = ?`).join(", ");
+      const values = entries.map(([, value]) => value);
+      await pool.query(`UPDATE ${TABLE} SET ${setClause} WHERE id = ?`, [...values, data.id]);
+    }
+    const [rows] = await pool.query("SELECT * FROM posts WHERE id = ?", [data.id]);
+    return rowToPost(firstRowOrThrow(rows as PostRow[]));
+  });
 
 export async function updatePost(id: string, input: Partial<PostInput>): Promise<Post> {
-  const { data, error } = await requireSupabase()
-    .from(TABLE)
-    .update(input)
-    .eq("id", id)
-    .select()
-    .single();
-  if (error) throw error;
-  return data;
+  return _updatePost({ data: { id, input } });
 }
 
+const _deletePost = createServerFn({ method: "POST" })
+  .validator((id: string) => id)
+  .handler(async ({ data: id }) => {
+    requireAdmin();
+    await getPool().query("DELETE FROM posts WHERE id = ?", [id]);
+  });
+
 export async function deletePost(id: string): Promise<void> {
-  const { error } = await requireSupabase().from(TABLE).delete().eq("id", id);
-  if (error) throw error;
+  await _deletePost({ data: id });
 }
 
 // -------------------------------------------------------------------------
