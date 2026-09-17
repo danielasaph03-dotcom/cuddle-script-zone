@@ -13,6 +13,7 @@ dist-ssr
 dist-pages
 dist-standalone
 .output
+.output-cpanel
 .vinxi
 .tanstack/**
 .nitro

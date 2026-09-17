@@ -7,7 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   root: "pages-src",
-  base: "/cuddle-script-zone/",
+  base: "/",
   plugins: [react(), tailwindcss()],
   publicDir: "../public",
   build: {
