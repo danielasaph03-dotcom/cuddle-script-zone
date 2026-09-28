@@ -165,6 +165,8 @@
     margin-bottom: 1.5rem;
   }
   .noticia-content img {
+    width: 100%;
+    height: auto;
     border-radius: 1rem;
     margin-bottom: 1.5rem;
   }
