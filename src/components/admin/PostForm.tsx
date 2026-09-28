@@ -35,7 +35,7 @@ const schema = z.object({
   excerpt: z.string().min(1, "Informe o resumo."),
   category: z.string(),
   author: z.string(),
-  published_at: z.string().min(1, "Informe a data."),
+  published_at: z.string(),
   content: z.string().min(1, "Escreva o conteúdo."),
   cover_image_ratio: z.enum(["landscape", "square", "portrait", "portrait_story", "original"]),
   seo_title: z.string().optional(),
@@ -45,7 +45,8 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 function toDateInputValue(iso: string | null): string {
-  if (!iso) return new Date().toISOString().slice(0, 10);
+  if (!iso)
+    return new Intl.DateTimeFormat("sv-SE", { timeZone: "America/Sao_Paulo" }).format(new Date());
   return iso.slice(0, 10);
 }
 
@@ -105,7 +106,9 @@ export function PostForm({ post, onSaved }: { post?: Post; onSaved: (post: Post)
       }
 
       const publishedAtIso =
-        status === "published" ? new Date(values.published_at + "T00:00:00Z").toISOString() : null;
+        status === "published" && values.published_at
+          ? new Date(values.published_at + "T00:00:00Z").toISOString()
+          : null;
 
       const input = {
         title: values.title,

@@ -112,6 +112,39 @@ function rowToPost(row: PostRow): Post {
   };
 }
 
+const SAO_PAULO_TZ = "America/Sao_Paulo";
+
+/** Formata como 'YYYY-MM-DD HH:mm:ss', o formato que o DATETIME do MySQL aceita. */
+function toMysqlDatetime(date: Date, timeZone: string): string {
+  return new Intl.DateTimeFormat("sv-SE", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  }).format(date);
+}
+
+/**
+ * A data escolhida no formulário é uma data de calendário: só é reformatada,
+ * sem deslocar de fuso (senão 19/09 00:00 UTC viraria 18/09 21:00). Já o
+ * "agora" (data vazia numa publicação) usa o relógio de Brasília.
+ */
+function normalizePublishedAt(
+  value: string | null | undefined,
+  status?: PostStatus,
+): string | null {
+  if (value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) throw new Error("Data de publicação inválida.");
+    return toMysqlDatetime(date, "UTC");
+  }
+  return status === "published" ? toMysqlDatetime(new Date(), SAO_PAULO_TZ) : null;
+}
+
 /** Lança se não houver uma sessão de admin válida no cookie da requisição atual. */
 function requireAdmin(): void {
   const token = getCookie(SESSION_COOKIE_NAME);
@@ -232,7 +265,7 @@ const _createPost = createServerFn({ method: "POST" })
         input.category,
         input.author,
         input.status,
-        input.published_at,
+        normalizePublishedAt(input.published_at, input.status),
         input.seo_title,
         input.seo_description,
       ],
@@ -250,7 +283,11 @@ const _updatePost = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     requireAdmin();
     const pool = getPool();
-    const entries = Object.entries(data.input).filter(
+    const input = { ...data.input };
+    if ("published_at" in input) {
+      input.published_at = normalizePublishedAt(input.published_at, input.status);
+    }
+    const entries = Object.entries(input).filter(
       ([key, value]) => value !== undefined && UPDATABLE_COLUMNS.has(key as keyof PostInput),
     );
     if (entries.length > 0) {
